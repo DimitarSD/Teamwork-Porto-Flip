@@ -1,55 +1,43 @@
-var game = (function () {
-	var game = Object.create({}),
-		cursors;
+(function () {
+    var game = (function () {
+        var game = new Phaser.Game(800, 400, Phaser.AUTO, ''),
+        gameState = function (game) { },
+        cursors;
 
-	Object.defineProperties(game, {
-		init: function () {
-			this.game = new Phaser.Game(800, 100, Phaser.Canvas, '', {
-				preload: this.preload,
-				create: this.create,
-				update: this.update
-			});
-		},
-		preload: function () {
-			this.game.load.image('diamond', 'assets/diamond.png');
-			this.game.load.image('firstaid', 'assets/firstaid.png');
-		},
-		create: function () {
-			var positionX = this.game.world.randomX,
-				positionY = this.game.world.randomY;
-					
-			this.game.stage.backgroundColor = '#009800';
-			this.game.world.setBounds(0, 0, 6000, 400);
+    gameState.prototype.preload = function () {
+        this.load.image('diamond', 'assets/diamond.png');
+        this.load.image('firstaid', 'assets/firstaid.png');
+    };
 
-			for (var i = 0; i < 100; i += 1) {
-				if (i % 10 === 0) {
-					this.game.add.sprite(positionX, positionY, 'firstaid');
-				} else {
-					this.game.add.sprite(positionX, positionY, 'diamond');
-				}
-			}
-			
-			cursors = this.game.input.keyboard.createCursorKeys();
-		},
-		update: function () {
-			if (cursors.up.isDown) {
-				this.game.camera.y -= 4;
-			} else if (cursors.down.isDown) {
-				this.game.camera.y += 4;
-			}
-			
-			if (cursors.left.isDown) {
-				this.game.camera.x -= 4;
-			} else {
-				this.game.camera.x += 4;
-			}
-		}
-	});
+    gameState.prototype.create = function () {
+        this.stage.backgroundColor = '#038FD6';
+        this.world.setBounds(0, 0, 6000, 400);
 
-	return {
-		preload: this.preload,
-		create: this.create,
-		update: this.update
-	};
+        for (var i = 0; i < 100; i += 1) {
+            if (i % 10 === 0) {
+                this.add.sprite(this.world.randomX, this.world.randomY, 'firstaid');
+            } else {
+                this.add.sprite(this.world.randomX, this.world.randomY, 'diamond');
+            }
+        }
+
+        cursors = this.input.keyboard.createCursorKeys();
+    };
+
+    gameState.prototype.update = function () {
+        if (cursors.up.isDown) {
+            this.camera.y -= 4;
+        } else if (cursors.down.isDown) {
+            this.camera.y += 4;
+        }
+
+        if (cursors.left.isDown) {
+            this.camera.x -= 4;
+        } else if (cursors.right.isDown) {
+            this.camera.x += 4;
+        }
+    };
+
+    game.state.add('game', gameState, true);
+     }());
 } ());
-
