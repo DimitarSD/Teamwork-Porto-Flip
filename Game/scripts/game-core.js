@@ -7,7 +7,9 @@
         goldenSnitches,
         player,
         score = 0,
-        scoreText;
+        scoreText,
+        pause_label,
+        backToGame_label;
 
     var GameState = function (game) {
     };
@@ -125,8 +127,21 @@
         // Camera will move with the player
         this.camera.follow(player.graphics);
 
-        scoreText = this.add.text(16, 30, 'Score: 0', {fontsize: '32px', fill: 'white'});
+        scoreText = this.add.text(16, 30, 'Score: 0', {font: '32px Arial', fill: 'white'});
         scoreText.fixedToCamera = true;
+
+        pause_label = this.add.text(900, 30, 'Pause', { font: '24px Arial', fill: 'white' });
+        pause_label.fixedToCamera = true;
+        pause_label.inputEnabled = true;
+
+        pause_label.events.onInputUp.add(function () {
+            game.paused = true;
+
+            pause_label.x -= 80;
+            pause_label.text = 'Back to game';
+        });
+
+        game.input.onDown.add(unpause, self);
     };
 
     GameState.prototype.update = function () {
@@ -162,6 +177,18 @@
 
         score += 10;
         scoreText.text = 'Score: ' + score;
+    }
+
+    function unpause(event) {
+        if (game.paused) {
+            // TODO: Check if the click was on the 'Back to game'
+            //if (event.x && event.y) {
+                game.paused = false;
+
+                pause_label.x += 80;
+                pause_label.text = 'Pause';
+            //}
+        }
     }
 
     game.state.add('ninja-flipper', GameState, true);
