@@ -1,5 +1,5 @@
 (function () {
-    var game = new Phaser.Game(1000, 500, Phaser.Canvas, 'ninja-flipper'),
+    var game = new Phaser.Game(1000, 500, Phaser.Canvas),
         map,
         levelOneFirstLayerBackground,
         levelOneSecondLayerPlatforms,
@@ -9,12 +9,158 @@
         score = 0,
         scoreText,
         pause_label,
-        backToGame_label;
+        PlayState = function () {},
+        BootState = function () {},
+        LoadState = function () {},
+        MenuState = function () {},
+        arrow,
+        buttons;
 
-    var GameState = function (game) {
+    BootState.prototype.init = function () {
+        // Add here the scaling options
     };
 
-    GameState.prototype.preload = function () {
+    BootState.prototype.preload = function () {
+        game.load.image('loading', 'assets/loading.png');
+        game.load.image('load_progress_bar', 'assets/progress_bar_bg.png');
+        game.load.image('load_progress_bar_dark', 'assets/progress_bar_fg.png');
+    };
+
+    BootState.prototype.create = function () {
+        game.state.start('load');
+    };
+
+    LoadState.prototype.loadingLabel = function () {
+        this.loading = game.add.sprite(game.world.centerX, game.world.centerY - 20, 'loading');
+        this.loading.anchor.setTo(0.5, 0.5);
+
+        this.barBg = game.add.sprite(game.world.centerX, game.world.centerY + 40, 'load_progress_bar');
+        this.barBg.anchor.setTo(0.5, 0.5);
+
+        this.bar = game.add.sprite(game.world.centerX - 192, game.world.centerY + 40, 'load_progress_bar_dark');
+        this.bar.anchor.setTo(0, 0.5);
+
+        game.load.setPreloadSprite(this.bar);
+    };
+
+    LoadState.prototype.preload = function () {
+        this.loadingLabel();
+
+        game.load.image('menu_title', 'assets/menu_game_title.png');
+        game.load.image('menu_arrow', 'assets/menu_arrow.png');
+        game.load.image('menu_button1', 'assets/menu_button.png');
+        game.load.image('menu_button2', 'assets/menu_button2.png');
+        game.load.image('menu_button3', 'assets/menu_button3.png');
+    };
+
+    LoadState.prototype.create = function () {
+        game.state.start('menu');
+    };
+
+    MenuState.prototype.create = function () {
+        this.cursors = game.input.keyboard.createCursorKeys();
+        this.gameTitle = game.add.image(game.world.centerX, game.world.centerY - 200, 'menu_title');
+        this.gameTitle.anchor.setTo(0.5, 0.5);
+        buttons.draw();
+        arrow.draw(buttons, 1);
+    };
+
+    MenuState.prototype.update = function () {
+        arrow.move(this.cursors, buttons);
+    };
+
+    arrow = {
+        draw: function () {
+            this.arrow = game.add.image(game.world.centerX - 100, game.world.centerY - 50, 'menu_arrow');
+            this.arrow.anchor.setTo(0.5, 0.5);
+            this.arrow.moveDelay = 200;
+            this.arrow.canMove = true;
+            this.arrow.currentButton = 1;
+            game.add.tween(this.arrow)
+                .to({
+                    x: this.arrow.x - 10
+                }, 700, Phaser.Easing.Quadratic.Out)
+                .to({
+                    x: this.arrow.x
+                }, 400, Phaser.Easing.Quadratic.In)
+                .loop()
+                .start();
+        },
+
+        move: function (cursors, buttons) {
+            if (cursors.down.isDown && this.arrow.canMove) {
+                this.arrow.canMove = false;
+                this.allowMovement();
+                if (this.arrow.currentButton === 1) {
+                    this.tween(buttons, 2);
+                } else if (this.arrow.currentButton === 2) {
+                    this.tween(buttons, 3);
+                } else {
+                    this.tween(buttons, 1);
+                }
+            }
+
+            if (cursors.up.isDown && this.arrow.canMove) {
+                this.arrow.canMove = false;
+                this.allowMovement();
+                if (this.arrow.currentButton === 1) {
+                    this.tween(buttons, 3);
+                } else if (this.arrow.currentButton === 2) {
+                    this.tween(buttons, 1);
+                } else {
+                    this.tween(buttons, 2);
+                }
+            }
+
+            if (game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) {
+                this.activateButton(buttons, this.arrow.currentButton);
+            }
+        },
+
+        tween: function (buttons, buttonNum) {
+            game.add.tween(this.arrow)
+                .to({
+                    y: game.world.centerY + buttons.pos[buttonNum - 1]
+                }, this.arrow.moveDelay, Phaser.Easing.Quadratic.In)
+                .start();
+            this.arrow.currentButton = buttonNum;
+        },
+
+        allowMovement: function () {
+            game.time.events.add(255, (function () {
+                this.arrow.canMove = true;
+            }), this);
+        },
+
+        activateButton: function (buttons, currentButton) {
+            buttons[buttons.callbacks[currentButton - 1]]();
+        }
+    };
+
+    buttons = {
+        pos: [-50, 50, 150],
+        callbacks: ['playState', 'playState', 'playState'],
+        draw: function () {
+            this.button1 = this.addButton(1, this.playState);
+            this.button1.anchor.setTo(0.5, 0.5);
+
+            this.button2 = this.addButton(2, this.playState);
+            this.button2.anchor.setTo(0.5, 0.5);
+
+            this.button3 = this.addButton(3, this.playState);
+            this.button3.anchor.setTo(0.5, 0.5);
+        },
+
+        addButton: function (position, func) {
+            return game.add.button(game.world.centerX, game.world.centerY + this.pos[position - 1], 'menu_button' + position, func);
+        },
+
+        playState: function () {
+            game.state.start('play');
+        }
+    };
+
+    PlayState.prototype.preload = function () {
         this.load.tilemap('LevelOneMap', 'levels/LevelOneMap.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('dark-night-background', 'L1-Telegwarts/a-dark-bleak-night-301906.jpg');
         this.load.image('rocks-platform', 'L1-Telegwarts/Rocks_sprite(32x32).ss.png');
@@ -22,7 +168,7 @@
         this.load.spritesheet('telerik-ninja', 'L1-Telegwarts/TANinjaSprite_small(32x48).ss.png', 32, 48);
     };
 
-    GameState.prototype.create = function () {
+    PlayState.prototype.create = function () {
         // Set size of world (size of level map)
         this.world.setBounds(0, 0, 4500, 500);
         this.physics.startSystem(Phaser.Physics.Arcade);
@@ -130,7 +276,7 @@
         scoreText = this.add.text(16, 30, 'Score: 0', {font: '32px Arial', fill: 'white'});
         scoreText.fixedToCamera = true;
 
-        pause_label = this.add.text(900, 30, 'Pause', { font: '24px Arial', fill: 'white' });
+        pause_label = this.add.text(900, 30, 'Pause', {font: '24px Arial', fill: 'white'});
         pause_label.fixedToCamera = true;
         pause_label.inputEnabled = true;
 
@@ -144,7 +290,7 @@
         game.input.onDown.add(unpause, self);
     };
 
-    GameState.prototype.update = function () {
+    PlayState.prototype.update = function () {
         this.physics.arcade.collide(player.graphics, levelOneSecondLayerPlatforms);
         this.physics.arcade.overlap(player.graphics, goldenSnitches, collectGoldenSnitches, null, this);
 
@@ -183,13 +329,19 @@
         if (game.paused) {
             // TODO: Check if the click was on the 'Back to game'
             //if (event.x && event.y) {
-                game.paused = false;
+            game.paused = false;
 
-                pause_label.x += 80;
-                pause_label.text = 'Pause';
+            pause_label.x += 80;
+            pause_label.text = 'Pause';
             //}
         }
     }
 
-    game.state.add('ninja-flipper', GameState, true);
+    //game.state.add('ninja-flipper', PlayState, true);
+
+    game.state.add('play', PlayState);
+    game.state.add('load', LoadState);
+    game.state.add('menu', MenuState);
+    game.state.add('boot', BootState);
+    game.state.start('boot');
 }());
