@@ -1,9 +1,9 @@
-define(['game', 'player'], function (game, Player) {
+define(['game', 'player', 'goldenSnitch'], function (game, Player, GoldenSnitch) {
     var map,
         levelOneFirstLayerBackground,
         levelOneSecondLayerPlatforms,
         cursors,
-        goldenSnitches,
+        snitchesGroup,
         player,
         score = 0,
         scoreText,
@@ -43,8 +43,8 @@ define(['game', 'player'], function (game, Player) {
 
         cursors = this.input.keyboard.createCursorKeys();
 
-        goldenSnitches = this.add.group();
-        goldenSnitches.enableBody = true;
+        snitchesGroup = this.add.group();
+        snitchesGroup.enableBody = true;
 
         var goldenSnitchesCoordinates = [
             {x: 95, y: 150},
@@ -70,22 +70,12 @@ define(['game', 'player'], function (game, Player) {
             {x: 4120, y: 185}
         ];
 
-        var GoldenSnitch = (function (game, group) {
-            var snitch = {
-                init: function (x, y) {
-                    snitch.graphics = group.create(x, y, 'golden-snitch-one');
-                }
-            };
-
-            return snitch;
-        }(this.game, goldenSnitches));
-
         for (var i = 0; i < goldenSnitchesCoordinates.length; i += 1) {
             var currentSnitch = goldenSnitchesCoordinates[i];
             var x = currentSnitch.x;
             var y = currentSnitch.y;
 
-            GoldenSnitch.init(x, y);
+            GoldenSnitch.init(x, y, snitchesGroup);
         }
 
         player = Player.init();
@@ -114,7 +104,7 @@ define(['game', 'player'], function (game, Player) {
 
     PlayState.prototype.update = function () {
         this.physics.arcade.collide(player.graphics, levelOneSecondLayerPlatforms);
-        this.physics.arcade.overlap(player.graphics, goldenSnitches, collectGoldenSnitches, null, this);
+        this.physics.arcade.overlap(player.graphics, snitchesGroup, collectGoldenSnitches, null, this);
 
         player.graphics.body.velocity.x = 0;
 
