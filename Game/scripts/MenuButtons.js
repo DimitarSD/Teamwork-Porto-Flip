@@ -9,7 +9,7 @@ define(['game'], function (game) {
             this.button2 = this.addButton(2, this.howToState);
             this.button2.anchor.setTo(0.5, 0.5);
 
-            this.button3 = this.addButton(3, this.playState);
+            this.button3 = this.addButton(3, this.creditsState);
             this.button3.anchor.setTo(0.5, 0.5);
         },
 
@@ -23,6 +23,10 @@ define(['game'], function (game) {
 
         howToState: function () {
             game.state.start('howto');
+        },
+
+        creditsState: function () {
+            game.state.start('credits');
         }
     };
 
