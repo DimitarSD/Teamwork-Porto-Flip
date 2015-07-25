@@ -125,6 +125,14 @@ define(['game', 'player', 'goldenSnitch'], function (game, Player, GoldenSnitch)
         if (cursors.up.isDown && player.graphics.body.onFloor()) {
             player.jump();
         }
+
+        if (player.graphics.y === 464) {
+            if (player.lives) {
+                player.kill();
+            } else {
+                // TODO add GameOverState
+            }
+        }
     };
 
     function collectGoldenSnitches (player, snitch) {

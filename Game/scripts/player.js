@@ -39,6 +39,10 @@ define(['game'], function (game) {
         },
         jump: function () {
             this.graphics.body.velocity.y = -280;
+        },
+        kill: function () {
+            this.lives -= 1;
+            this.graphics.reset(100, 250);
         }
     };
 
