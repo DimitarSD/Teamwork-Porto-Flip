@@ -4,7 +4,7 @@ define(['game'], function (game) {
             this.name = name;
             this.health = 200;
             this.points = 0;
-            this.lives = 0;
+            this.lives = 3;
             this.graphics = game.add.sprite(100, 250, 'telerik-ninja');
 
             return this;
@@ -22,6 +22,23 @@ define(['game'], function (game) {
             // The animations of walking left and right
             this.graphics.animations.add('left', [0, 1, 2, 3], 10, true);
             this.graphics.animations.add('right', [5, 6, 7, 8], 10, true);
+        },
+        move: function (direction) {
+            var dirIndex = 1;
+
+            if (direction === 'left') {
+                dirIndex = -1;
+            }
+
+            this.graphics.body.velocity.x = dirIndex * 150;
+            this.graphics.animations.play(direction);
+        },
+        stayStill: function () {
+            this.graphics.animations.stop();
+            this.graphics.frame = 4;
+        },
+        jump: function () {
+            this.graphics.body.velocity.y = -280;
         }
     };
 

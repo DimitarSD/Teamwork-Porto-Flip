@@ -110,23 +110,20 @@ define(['game', 'player', 'goldenSnitch'], function (game, Player, GoldenSnitch)
 
         if (cursors.left.isDown) {
             // Move to the left
-            player.graphics.body.velocity.x = -150;
-            player.graphics.animations.play('left');
+            player.move('left');
         }
         else if (cursors.right.isDown) {
             // Move to the right
-            player.graphics.body.velocity.x = 150;
-            player.graphics.animations.play('right');
+            player.move('right');
         }
         else {
             // Stand still
-            player.graphics.animations.stop();
-            player.graphics.frame = 4;
+            player.stayStill();
         }
 
         // Allow the player to jump if they are touching the ground
         if (cursors.up.isDown && player.graphics.body.onFloor()) {
-            player.graphics.body.velocity.y = -280;
+            player.jump();
         }
     };
 
