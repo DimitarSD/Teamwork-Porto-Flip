@@ -94,7 +94,8 @@
 					this.name = name;
 					this.health = 200;
 					this.points = 0;
-					this.lives = 0;
+					this.lives = 3;
+					this.isDead = false;
 					this.graphics = game.add.sprite(100, 250, 'telerik-ninja');
 
 					return this;
