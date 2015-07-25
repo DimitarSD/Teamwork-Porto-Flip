@@ -6,7 +6,7 @@ define(['game'], function (game) {
             this.button1 = this.addButton(1, this.playState);
             this.button1.anchor.setTo(0.5, 0.5);
 
-            this.button2 = this.addButton(2, this.playState);
+            this.button2 = this.addButton(2, this.howToState);
             this.button2.anchor.setTo(0.5, 0.5);
 
             this.button3 = this.addButton(3, this.playState);
@@ -19,6 +19,10 @@ define(['game'], function (game) {
 
         playState: function () {
             game.state.start('play');
+        },
+
+        howToState: function () {
+            game.state.start('howto');
         }
     };
 
