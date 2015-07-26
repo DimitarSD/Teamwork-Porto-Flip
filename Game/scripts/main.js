@@ -1,6 +1,6 @@
 define(['game', 'states/BootState', 'states/LoadState', 'states/MenuState', 'states/PlayState',
-        'states/HowToState', 'states/CreditsState'],
-    function (game, BootState, LoadState, MenuState, PlayState, HowToState, CreditsState) {
+        'states/HowToState', 'states/CreditsState', 'states/GameOverState'],
+    function (game, BootState, LoadState, MenuState, PlayState, HowToState, CreditsState, GameOverState) {
     //game.state.add('ninja-flipper', PlayState, true);
 
     game.state.add('boot', BootState);
@@ -9,6 +9,7 @@ define(['game', 'states/BootState', 'states/LoadState', 'states/MenuState', 'sta
     game.state.add('play', PlayState);
     game.state.add('howto', HowToState);
     game.state.add('credits', CreditsState);
+    game.state.add('game-over', GameOverState);
 
     game.state.start('boot');
 });

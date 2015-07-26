@@ -5,6 +5,7 @@ define(['game'], function (game) {
             this.health = 200;
             this.points = 0;
             this.lives = 3;
+            this.level = 1;
             this.graphics = game.add.sprite(100, 250, 'telerik-ninja');
 
             return this;

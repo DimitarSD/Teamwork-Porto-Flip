@@ -129,7 +129,7 @@ define(['game', 'player', 'goldenSnitch'], function (game, Player, GoldenSnitch)
             if (player.lives) {
                 player.kill();
             } else {
-                // TODO add GameOverState
+                game.state.start('game-over');
             }
         }
     };
