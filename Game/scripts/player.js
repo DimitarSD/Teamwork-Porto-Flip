@@ -43,6 +43,9 @@ define(['game'], function (game) {
         kill: function () {
             this.lives -= 1;
             this.graphics.reset(100, 250);
+        },
+        increasePoints: function () {
+            this.points += 10;
         }
     };
 

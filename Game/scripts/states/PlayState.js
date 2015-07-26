@@ -5,7 +5,6 @@ define(['game', 'player', 'goldenSnitch'], function (game, Player, GoldenSnitch)
         cursors,
         snitchesGroup,
         player,
-        score = 0,
         scoreText,
         pause_label;
 
@@ -135,11 +134,11 @@ define(['game', 'player', 'goldenSnitch'], function (game, Player, GoldenSnitch)
         }
     };
 
-    function collectGoldenSnitches (player, snitch) {
+    function collectGoldenSnitches (playerSprite, snitch) {
         snitch.kill();
 
-        score += 10;
-        scoreText.text = 'Score: ' + score;
+        player.increasePoints();
+        scoreText.text = 'Score: ' + player.points;
     }
 
     function unpause (event) {
