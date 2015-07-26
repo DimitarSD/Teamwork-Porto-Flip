@@ -1,0 +1,68 @@
+@font-face {
+    font-family: GameOverMessage;
+    src: url(font/GROBOLD.ttf);
+}
+
+div {
+	width: 400px;
+	height: 200px;
+	margin-left: 300px;
+	margin-top: 150px;
+	border: 1px solid black;
+	border-radius: 8px;
+	background-size: 400px 200px;
+	z-index: -1;
+}
+
+span {
+	display: block;
+	margin-left: 84px;
+	margin-top: 50px;
+	font-family: GameOverMessage;
+	font-size: 45px;
+	color: white;
+	z-index: 1;
+	text-shadow: 4px 0 green, 0 1px green, 1px 0 black, 0 -1px black;
+}
+
+button {
+	margin-top: 30px;
+	margin-left: 68px;
+	font-size: 16px;
+	color: white;
+	width: 100px;
+	height: 50px;
+	border: none;
+	border-radius: 10px;
+	background: #0484e5; /* Old browsers */
+    background: -moz-linear-gradient(top, #0484e5 0%, #12295e 50%, #12295e 54%, #011033 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0484e5), color-stop(50%,#12295e), color-stop(54%,#12295e), color-stop(100%,#011033)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #0484e5 0%,#12295e 50%,#12295e 54%,#011033 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #0484e5 0%,#12295e 50%,#12295e 54%,#011033 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #0484e5 0%,#12295e 50%,#12295e 54%,#011033 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #0484e5 0%,#12295e 50%,#12295e 54%,#011033 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0484e5', endColorstr='#011033',GradientType=0 ); /* IE6-9 */
+}
+
+button:focus {
+	outline:0;
+}
+
+.hvr-border-fade {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  box-shadow: inset 0 0 0 4px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-border-fade:hover, .hvr-border-fade:focus, .hvr-border-fade:active {
+  box-shadow: inset 0 0 0 4px #21CC0F, 0 0 1px rgba(0, 0, 0, 0);
+}
