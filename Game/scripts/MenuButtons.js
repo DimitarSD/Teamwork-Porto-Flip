@@ -1,7 +1,7 @@
 define(['game'], function (game) {
     var buttons = {
         pos: [-50, 50, 150],
-        callbacks: ['playState', 'playState', 'playState'],
+        callbacks: ['playState', 'howToState', 'playState'],
         draw: function () {
             this.button1 = this.addButton(1, this.playState);
             this.button1.anchor.setTo(0.5, 0.5);

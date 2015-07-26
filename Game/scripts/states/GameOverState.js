@@ -15,21 +15,21 @@ define(['game', 'player'], function (game, player) {
 
         span = document.createElement('span');
         spanText = document.createTextNode('Game over');
-        span.textContent = spanText.textContent;
+        span.innerText = spanText.textContent;
 
         playAgainButton = document.createElement('button');
         playAgainButton.className = 'hvr-border-fade';
         playAgainButton.id = 'play-again';
 
         playAgainButtonText = document.createTextNode('Play again');
-        playAgainButton.textContent = playAgainButtonText.textContent;
+        playAgainButton.innerText = playAgainButtonText.textContent;
 
         exitButton = document.createElement('button');
         exitButton.className = 'hvr-border-fade';
         exitButton.id = 'exit';
 
         exitButtonText = document.createTextNode('Exit');
-        exitButton.textContent = exitButtonText.textContent;
+        exitButton.innerText = exitButtonText.textContent;
 
         div.appendChild(span);
         div.appendChild(playAgainButton);
