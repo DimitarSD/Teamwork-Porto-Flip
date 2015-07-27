@@ -97,7 +97,7 @@ define(['game', 'sweetCookie', 'controller'], function (game, SweetCookie, contr
 
         this.controller.update(levelFourSecondLayerPlatforms, cookiesGroup);
 
-        if (this.player.points === 280) {
+        if (this.player.points === 680) {
             // TODO: Load final state - score, statistic
         }
     };
