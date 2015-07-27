@@ -37,7 +37,7 @@ define(['game', 'sweetCookie', 'controller'], function (game, SweetCookie, contr
         // Set collision between player and platforms
         map.setCollisionByExclusion([0], true, levelFourSecondLayerPlatforms);
 
-        //Create snitches
+        //Create cookies
         cookiesGroup = this.add.group();
         cookiesGroup.enableBody = true;
 
