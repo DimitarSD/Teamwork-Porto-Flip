@@ -22,7 +22,8 @@ define(['game', 'player', 'controller'], function (game, Player, Controller) {
 
         //Create controller to control the game
         controller = new Controller(player);
-
+        
+        player.level = 1;
         game.state.start('level1', true, false, player, controller);
     };
 

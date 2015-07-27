@@ -91,6 +91,7 @@ define(['game', 'goldenSnitch', 'controller'], function (game, GoldenSnitch, con
         this.controller.update(levelOneSecondLayerPlatforms, snitchesGroup);
 
         if (this.player.points === 210) {
+            this.player.level = 3;
             game.state.start('level3', true, false, this.player, this.controller);
         }
     };

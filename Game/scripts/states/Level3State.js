@@ -91,6 +91,7 @@ define(['game', 'shampoo', 'controller'], function (game, Shampoo, controller) {
         this.controller.update(levelThreeSecondLayerPlatforms, shampoosGroup);
 
         if (this.player.points === 410) {
+            this.player.level = 4;
             game.state.start('level4', true, false, this.player, this.controller);
         }
     };

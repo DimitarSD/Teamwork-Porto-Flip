@@ -11,7 +11,9 @@ define(['game', 'player'], function (game, player) {
             playAgainButton,
             playAgainButtonText,
             exitButton,
-            exitButtonText;
+            exitButtonText,
+            playButton,
+            returnToMenu;
 
         span = document.createElement('span');
         spanText = document.createTextNode('Game over');
@@ -46,6 +48,24 @@ define(['game', 'player'], function (game, player) {
         }
 
         body.appendChild(div);
+
+        playButton = document.getElementById('play-again');
+        playButton.onclick = function () {
+            div.removeChild(span);
+            div.removeChild(playAgainButton);
+            div.removeChild(exitButton);
+            body.removeChild(div);
+            game.state.start('play');
+        };
+
+        returnToMenu = document.getElementById('exit');
+        returnToMenu.onclick = function () {
+            div.removeChild(span);
+            div.removeChild(playAgainButton);
+            div.removeChild(exitButton);
+            body.removeChild(div);
+            game.state.start('boot');
+        };
 
         player.level = 1;
         player.lives = 3;
