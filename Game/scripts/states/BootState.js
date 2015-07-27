@@ -7,9 +7,9 @@ define(['game'], function (game) {
     };
 
     BootState.prototype.preload = function () {
-        game.load.image('loading', 'assets/loading.png');
-        game.load.image('load_progress_bar', 'assets/progress_bar_bg.png');
-        game.load.image('load_progress_bar_dark', 'assets/progress_bar_fg.png');
+        game.load.image('loading', 'images/menu/loading.png');
+        game.load.image('load_progress_bar', 'images/menu/progress_bar_bg.png');
+        game.load.image('load_progress_bar_dark', 'images/menu/progress_bar_fg.png');
 
         game.load.audio('bg-music', 'music/kickstarter.mp3');
     };

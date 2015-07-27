@@ -18,11 +18,11 @@ define(['game'], function (game) {
     LoadState.prototype.preload = function () {
         this.loadingLabel();
 
-        game.load.image('menu_title', 'assets/menu_game_title.png');
-        game.load.image('menu_arrow', 'assets/menu_arrow.png');
-        game.load.image('menu_button1', 'assets/menu_button.png');
-        game.load.image('menu_button2', 'assets/menu_button2.png');
-        game.load.image('menu_button3', 'assets/menu_button3.png');
+        game.load.image('menu_title', 'images/menu/menu_game_title.png');
+        game.load.image('menu_arrow', 'images/menu/menu_arrow.png');
+        game.load.image('menu_button1', 'images/menu/menu_button.png');
+        game.load.image('menu_button2', 'images/menu/menu_button2.png');
+        game.load.image('menu_button3', 'images/menu/menu_button3.png');
     };
 
     LoadState.prototype.create = function () {

@@ -1,4 +1,4 @@
-define(['game', 'collectableItem'], function (game, CollectableItem) {
+define(['../../game', 'collectableItem'], function (game, CollectableItem) {
     var map,
         levelFourFirstLayerBackground,
         levelFourSecondLayerPlatforms,
@@ -15,9 +15,9 @@ define(['game', 'collectableItem'], function (game, CollectableItem) {
 
     Level4State.prototype.preload = function () {
         this.load.tilemap('LevelFourMap', 'levels/LevelFourMap.json', null, Phaser.Tilemap.TILED_JSON);
-        this.load.image('countryside-background', 'L4-BigBirdTown/l4-background-001.jpg');
-        this.load.image('wooden-platform', 'L4-BigBirdTown/Platforms.png');
-        this.load.image('sweet-cookie', 'L4-BigBirdTown/cookie1.png');
+        this.load.image('countryside-background', 'images/L4-BigBirdTown/l4-background-001.jpg');
+        this.load.image('wooden-platform', 'images/L4-BigBirdTown/Platforms.png');
+        this.load.image('sweet-cookie', 'images/L4-BigBirdTown/cookie1.png');
     };
 
     Level4State.prototype.create = function () {

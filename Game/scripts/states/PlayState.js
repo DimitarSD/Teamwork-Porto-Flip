@@ -7,7 +7,7 @@ define(['game', 'player', 'controller'], function (game, Player, Controller) {
     };
 
     PlayState.prototype.preload = function () {
-        this.load.spritesheet('telerik-ninja', 'L1-Telegwarts/TANinjaSprite_small(32x48).ss.png', 32, 48);
+        this.load.spritesheet('telerik-ninja', 'images/L1-Telegwarts/TANinjaSprite_small(32x48).ss.png', 32, 48);
     };
 
     PlayState.prototype.create = function () {
@@ -22,7 +22,7 @@ define(['game', 'player', 'controller'], function (game, Player, Controller) {
 
         //Create controller to control the game
         controller = new Controller(player);
-        
+
         player.level = 1;
         game.state.start('level1', true, false, player, controller);
     };

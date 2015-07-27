@@ -1,5 +1,5 @@
 define(['game', 'states/BootState', 'states/LoadState', 'states/MenuState', 'states/PlayState',
-        'states/HowToState', 'states/CreditsState', 'states/GameOverState','states/Level1State', 'states/Level3State', 'states/Level4State'],
+        'states/HowToState', 'states/CreditsState', 'states/GameOverState','states/levels/Level1State', 'states/levels/Level3State', 'states/levels/Level4State'],
     function (game, BootState, LoadState, MenuState, PlayState, HowToState, CreditsState, GameOverState,
               Level1State, Level3State, Level4State) {
         //game.state.add('ninja-flipper', PlayState, true);

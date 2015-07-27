@@ -1,4 +1,4 @@
-define(['game'], function (game) {
+define(['../game'], function (game) {
     function Arrow() {
     };
 

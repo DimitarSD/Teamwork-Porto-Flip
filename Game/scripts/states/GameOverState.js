@@ -64,7 +64,7 @@ define(['game', 'player'], function (game, player) {
             div.removeChild(playAgainButton);
             div.removeChild(exitButton);
             body.removeChild(div);
-            game.state.start('boot');
+            game.state.start('menu');
         };
 
         player.level = 1;

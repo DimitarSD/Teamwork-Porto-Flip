@@ -1,4 +1,4 @@
-define(['game', 'menuArrow', 'menuButtons'], function (game, Arrow, Buttons) {
+define(['game', '../menu/arrow', '../menu/buttons'], function (game, Arrow, Buttons) {
     function MenuState () {
         this.buttons = new Buttons();
         this.arrow = new Arrow();
