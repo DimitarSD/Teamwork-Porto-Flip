@@ -1,15 +1,18 @@
 define(['game', 'states/BootState', 'states/LoadState', 'states/MenuState', 'states/PlayState',
-        'states/HowToState', 'states/CreditsState', 'states/GameOverState'],
-    function (game, BootState, LoadState, MenuState, PlayState, HowToState, CreditsState, GameOverState) {
-    //game.state.add('ninja-flipper', PlayState, true);
+        'states/HowToState', 'states/CreditsState', 'states/GameOverState','states/Level1State', 'states/Level3State'],
+    function (game, BootState, LoadState, MenuState, PlayState, HowToState, CreditsState, GameOverState,
+              Level1State, Level3State) {
+        //game.state.add('ninja-flipper', PlayState, true);
 
-    game.state.add('boot', BootState);
-    game.state.add('load', LoadState);
-    game.state.add('menu', MenuState);
-    game.state.add('play', PlayState);
-    game.state.add('howto', HowToState);
-    game.state.add('credits', CreditsState);
-    game.state.add('game-over', GameOverState);
+        game.state.add('boot', BootState);
+        game.state.add('load', LoadState);
+        game.state.add('menu', MenuState);
+        game.state.add('play', PlayState);
+        game.state.add('howto', HowToState);
+        game.state.add('credits', CreditsState);
+        game.state.add('level1', Level1State);
+        game.state.add('level3', Level3State);
+        game.state.add('game-over', GameOverState);
 
-    game.state.start('boot');
-});
+        game.state.start('boot');
+    });

@@ -6,9 +6,11 @@ define(['game'], function (game) {
             this.points = 0;
             this.lives = 3;
             this.level = 1;
-            this.graphics = game.add.sprite(100, 250, 'telerik-ninja');
 
             return this;
+        },
+        placeAtMap: function (x, y) {
+            this.graphics = game.add.sprite(x, y, 'telerik-ninja');
         },
         makeBodyArcade: function () {
             // We need to enable physics on the player
