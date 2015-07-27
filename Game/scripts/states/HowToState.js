@@ -1,22 +1,20 @@
 define(['game', 'player'], function (game, Player) {
-
     var map,
         levelHowtoBackground,
         levelHowtoPlatforms,
         levelHowtoPhrases,
         cursors,
-        escapeKey,
-        player;
+        escapeKey;
 
     function HowToState() {
     };
 
     HowToState.prototype.preload = function () {
-        this.load.tilemap('howtoMap', 'HowTo/howto.json', null, Phaser.Tilemap.TILED_JSON);
-        this.load.image('background', 'HowTo/trainers.jpg');
-        this.load.image('phrases', 'HowTo/phrases.ss.png');
-        this.load.image('rocks-platform', 'L1-Telegwarts/Rocks_sprite(32x32).ss.png');
-        this.load.spritesheet('telerik-ninja', 'L1-Telegwarts/TANinjaSprite_small(32x48).ss.png', 32, 48);
+        this.load.tilemap('howtoMap', 'levels/howto.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.image('background', 'images/HowTo/trainers.jpg');
+        this.load.image('phrases', 'images/HowTo/phrases.ss.png');
+        this.load.image('rocks-platform', 'images/L1-Telegwarts/Rocks_sprite(32x32).ss.png');
+        this.load.spritesheet('telerik-ninja', 'images/L1-Telegwarts/TANinjaSprite_small(32x48).ss.png', 32, 48);
     };
 
     HowToState.prototype.create = function () {
@@ -55,42 +53,43 @@ define(['game', 'player'], function (game, Player) {
         cursors = this.input.keyboard.createCursorKeys();
         escapeKey = this.input.keyboard.addKey(Phaser.Keyboard.ESC);
 
-        player = Player.init();
-        player.makeBodyArcade();
-        player.addAnimations();
+        this.player = new Player('Test Ninja');
+        this.player.placeAtMap(100, 250);
+        this.player.makeBodyArcade();
+        this.player.addAnimations();
 
-        // Camera will move with the player
-        this.camera.follow(player.graphics);
+        // Camera will move with the this.player
+        this.camera.follow(this.player.graphics);
 
     };
 
     HowToState.prototype.update = function () {
         // Update function
-        this.physics.arcade.collide(player.graphics, levelHowtoPlatforms);
+        this.physics.arcade.collide(this.player.graphics, levelHowtoPlatforms);
 
-        player.graphics.body.velocity.x = 0;
+        this.player.graphics.body.velocity.x = 0;
 
         if (cursors.left.isDown) {
             // Move to the left
-            player.move('left');
+            this.player.move('left');
         }
         else if (cursors.right.isDown) {
             // Move to the right
-            player.move('right');
+            this.player.move('right');
         }
         else {
             // Stand still
-            player.stayStill();
+            this.player.stayStill();
         }
 
-        // Allow the player to jump if they are touching the ground
-        if (cursors.up.isDown && player.graphics.body.onFloor()) {
-            player.jump();
+        // Allow the this.player to jump if they are touching the ground
+        if (cursors.up.isDown && this.player.graphics.body.onFloor()) {
+            this.player.jump();
         }
 
-        if (player.graphics.y === 464) {
-            if (player.lives) {
-                player.kill();
+        if (this.player.graphics.y === 464) {
+            if (this.player.lives) {
+                this.player.kill();
             } else {
                 game.state.start('menu');
             }
