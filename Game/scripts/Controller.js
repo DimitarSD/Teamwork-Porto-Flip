@@ -36,7 +36,7 @@ define(['game'], function (game) {
     };
 
     Controller.prototype.showScore = function () {
-        scoreText = game.add.text(16, 30, 'Score: 0', {font: '32px Arial', fill: 'white'});
+        scoreText = game.add.text(16, 30, 'Score: ' + this.player.points, {font: '32px Arial', fill: 'white'});
         scoreText.fixedToCamera = true;
     };
 
