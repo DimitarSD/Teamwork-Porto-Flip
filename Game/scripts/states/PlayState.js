@@ -18,7 +18,7 @@ define(['game', 'player', 'controller'], function (game, Player, Controller) {
         cursors = this.input.keyboard.createCursorKeys();
 
         //Create player
-        player = Player.init();
+        player = new Player("Telerik Ninja");
 
         //Create controller to control the game
         controller = new Controller(player);

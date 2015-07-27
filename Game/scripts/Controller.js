@@ -5,7 +5,6 @@ define(['game'], function (game) {
 
     function Controller(player) {
         this.player = player;
-        return this;
     };
 
     Controller.prototype.pause = function () {
