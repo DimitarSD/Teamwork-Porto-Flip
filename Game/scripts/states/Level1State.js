@@ -1,4 +1,4 @@
-define(['game', 'goldenSnitch', 'controller'], function (game, GoldenSnitch, controller) {
+define(['game', 'collectableItem', 'controller'], function (game, CollectableItem, controller) {
     var map,
         levelOneFirstLayerBackground,
         levelOneSecondLayerPlatforms,
@@ -80,7 +80,7 @@ define(['game', 'goldenSnitch', 'controller'], function (game, GoldenSnitch, con
             var x = currentSnitch.x;
             var y = currentSnitch.y;
 
-            GoldenSnitch.init(x, y, snitchesGroup);
+            new CollectableItem(x, y, snitchesGroup, 'golden-snitch-one');
         }
     };
 

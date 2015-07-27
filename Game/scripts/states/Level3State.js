@@ -1,4 +1,4 @@
-define(['game', 'shampoo', 'controller'], function (game, Shampoo, controller) {
+define(['game', 'collectableItem'], function (game, CollectableItem) {
     var map,
         levelThreeFirstLayerBackground,
         levelThreeSecondLayerPlatforms,
@@ -80,7 +80,7 @@ define(['game', 'shampoo', 'controller'], function (game, Shampoo, controller) {
             var x = currentShampoo.x;
             var y = currentShampoo.y;
 
-            Shampoo.init(x, y, shampoosGroup);
+            new CollectableItem(x, y, shampoosGroup, 'shampoo');
         }
     };
 

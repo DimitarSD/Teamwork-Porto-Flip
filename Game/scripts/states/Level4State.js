@@ -1,4 +1,4 @@
-define(['game', 'sweetCookie', 'controller'], function (game, SweetCookie, controller) {
+define(['game', 'collectableItem'], function (game, CollectableItem) {
     var map,
         levelFourFirstLayerBackground,
         levelFourSecondLayerPlatforms,
@@ -87,7 +87,7 @@ define(['game', 'sweetCookie', 'controller'], function (game, SweetCookie, contr
             var x = currentCookie.x;
             var y = currentCookie.y;
 
-            SweetCookie.init(x, y, cookiesGroup);
+            new CollectableItem(x, y, cookiesGroup, 'sweet-cookie');
         }
     };
 
