@@ -1,0 +1,32 @@
+@font-face {
+	font-family: names;
+	src: url(font/lastninja.ttf);
+}
+
+ul {
+    position: fixed;
+    width: 315px;
+    margin-top: 130px;
+    margin-left: 320px;
+    list-style: none;
+}
+
+li {
+    font-family: names;
+    font-size: 17px;
+    color: #00B200;
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #00B200;
+}
+
+a:hover {
+    color: white;
+}
+
+li:hover{
+    color: #007ACC;
+}
