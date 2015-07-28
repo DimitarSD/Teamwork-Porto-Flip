@@ -72,7 +72,7 @@ define(['game'], function (game) {
             if (this.player.lives) {
                 this.player.kill();
             } else {
-                game.state.start('game-over');
+                game.state.start('game-over', true, false, this.player);
             }
         }
     };
