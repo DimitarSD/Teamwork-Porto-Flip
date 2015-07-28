@@ -1,8 +1,4 @@
-define(['game', 'player', 'controller'], function (game, Player, Controller) {
-    var cursors,
-        player,
-        controller;
-
+define(['game', 'player', 'engine'], function (game, Player, Engine) {
     function PlayState () {
     };
 
@@ -11,6 +7,10 @@ define(['game', 'player', 'controller'], function (game, Player, Controller) {
     };
 
     PlayState.prototype.create = function () {
+        var cursors,
+            player,
+            engine;
+
         // Set size of world (size of level map)
         this.world.setBounds(0, 0, 4500, 500);
         this.physics.startSystem(Phaser.Physics.Arcade);
@@ -20,11 +20,11 @@ define(['game', 'player', 'controller'], function (game, Player, Controller) {
         //Create player
         player = new Player("Telerik Ninja");
 
-        //Create controller to control the game
-        controller = new Controller(player);
+        //Create engine to control the game
+        engine = new Engine(player);
 
         player.level = 1;
-        game.state.start('level1', true, false, player, controller);
+        game.state.start('level1', true, false, player, engine);
     };
 
     return PlayState;

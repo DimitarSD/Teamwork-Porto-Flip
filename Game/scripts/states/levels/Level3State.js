@@ -23,7 +23,7 @@ define(['../../game', 'collectableItem', 'states/levels/LevelState'], function (
 
         if (this.player.points === 410) {
             this.player.level = 4;
-            game.state.start('level4', true, false, this.player, this.controller);
+            game.state.start('level4', true, false, this.player, this.engine);
         }
     };
 

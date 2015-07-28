@@ -1,4 +1,4 @@
-define(['../../game', 'collectableItem', 'controller', 'states/levels/LevelState'], function (game, CollectableItem, controller, Parent) {
+define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], function (game, CollectableItem, Engine, Parent) {
     var map,
         levelOneFirstLayerBackground,
         levelOneSecondLayerPlatforms,
@@ -23,7 +23,7 @@ define(['../../game', 'collectableItem', 'controller', 'states/levels/LevelState
 
         if (this.player.points === 210) {
             this.player.level = 3;
-            game.state.start('level3', true, false, this.player, this.controller);
+            game.state.start('level3', true, false, this.player, this.engine);
         }
     };
 

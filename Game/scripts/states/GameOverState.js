@@ -1,4 +1,4 @@
-define(['game', 'player'], function (game, player) {
+define(['game'], function (game) {
     var body = document.getElementsByTagName('body')[0],
         div = document.createElement('div');
 

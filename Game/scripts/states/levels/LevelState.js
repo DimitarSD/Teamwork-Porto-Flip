@@ -1,11 +1,11 @@
-define(['../../game', 'collectableItem'], function (game, CollectableItem) {
-    function LevelState(player, controller) {
-        this.init(player, controller);
+define(['../../game'], function (game) {
+    function LevelState(player, engine) {
+        this.init(player, engine);
     };
 
-    LevelState.prototype.init = function (player, controller) {
+    LevelState.prototype.init = function (player, engine) {
         this.player = player;
-        this.controller = controller;
+        this.engine = engine;
     };
 
     LevelState.prototype.preload = function () {
@@ -20,14 +20,14 @@ define(['../../game', 'collectableItem'], function (game, CollectableItem) {
 
     LevelState.prototype.update = function (secondLayerPlatfrom, collection) {
         game.physics.arcade.collide(this.player.graphics, secondLayerPlatfrom);
-        game.physics.arcade.overlap(this.player.graphics, collection, this.controller.collectItems, null, this);
+        game.physics.arcade.overlap(this.player.graphics, collection, this.engine.collectItems, null, this);
 
-        this.controller.update(secondLayerPlatfrom, collection);
+        this.engine.update(secondLayerPlatfrom, collection);
     };
 
     LevelState.prototype.initializeEngine = function () {
-        this.controller.pause();
-        this.controller.showScore();
+        this.engine.pause();
+        this.engine.showScore();
     };
 
     /**
