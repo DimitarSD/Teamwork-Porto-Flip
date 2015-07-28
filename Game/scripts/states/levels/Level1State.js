@@ -90,9 +90,9 @@ define(['../../game', 'collectableItem', 'controller'], function (game, Collecta
 
         this.controller.update(levelOneSecondLayerPlatforms, snitchesGroup);
 
-        if (this.player.points === 210) {
-            this.player.level = 3;
-            game.state.start('level3', true, false, this.player, this.controller);
+        if (this.player.points === 10) {
+            this.player.level = 2;
+            game.state.start('level2', true, false, this.player, this.controller);
         }
     };
 
