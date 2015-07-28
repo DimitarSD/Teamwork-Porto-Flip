@@ -5,6 +5,10 @@ define(['game', 'player'], function (game, player) {
     function GameOverState() {
     };
 
+    GameOverState.prototype.init = function (player) {
+        this.player = player;
+    };
+
     GameOverState.prototype.create = function () {
         var span,
             spanText,
@@ -38,13 +42,13 @@ define(['game', 'player'], function (game, player) {
         div.appendChild(exitButton);
 
         if (player.level === 1) {
-            div.style.backgroundImage = 'url(\'Game Over - messages background/L1-hogwarts.jpg\')';
+            div.style.backgroundImage = "url('images/Game Over - messages background/L1-hogwarts.jpg')";
         } else if (player.level === 2) {
-            div.style.backgroundImage = 'url(\'Game Over - messages background/L2-cat.jpg\')';
+            div.style.backgroundImage = "url('images/Game Over - messages background/L2-cat.jpg')";
         } else if (player.level === 3) {
-            div.style.backgroundImage = 'url(\'Game Over - messages background/L3-beach.jpg\')';
+            div.style.backgroundImage = "url('images/Game Over - messages background/L3-beach.jpg')";
         } else if (player.level === 4) {
-            div.style.backgroundImage = 'url(\'Game Over - messages background/L4-bigBird.jpg\')';
+            div.style.backgroundImage = "url('images/Game Over - messages background/L4-bigBird.jpg')";
         }
 
         body.appendChild(div);
