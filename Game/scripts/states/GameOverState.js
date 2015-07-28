@@ -41,13 +41,13 @@ define(['game', 'player'], function (game, player) {
         div.appendChild(playAgainButton);
         div.appendChild(exitButton);
 
-        if (player.level === 1) {
+        if (this.player.level === 1) {
             div.style.backgroundImage = "url('images/Game Over - messages background/L1-hogwarts.jpg')";
-        } else if (player.level === 2) {
+        } else if (this.player.level === 2) {
             div.style.backgroundImage = "url('images/Game Over - messages background/L2-cat.jpg')";
-        } else if (player.level === 3) {
+        } else if (this.player.level === 3) {
             div.style.backgroundImage = "url('images/Game Over - messages background/L3-beach.jpg')";
-        } else if (player.level === 4) {
+        } else if (this.player.level === 4) {
             div.style.backgroundImage = "url('images/Game Over - messages background/L4-bigBird.jpg')";
         }
 
@@ -70,9 +70,6 @@ define(['game', 'player'], function (game, player) {
             body.removeChild(div);
             game.state.start('menu');
         };
-
-        player.level = 1;
-        player.lives = 3;
     };
 
     return GameOverState;
