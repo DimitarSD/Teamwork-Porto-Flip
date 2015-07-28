@@ -1,4 +1,4 @@
-define(['../../game', 'collectableItem', 'enemy'], function (game, CollectableItem, BigBird) {
+define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], function (game, CollectableItem, BigBird, Parent) {
     var map,
         levelFourFirstLayerBackground,
         levelFourSecondLayerPlatforms,
@@ -10,24 +10,8 @@ define(['../../game', 'collectableItem', 'enemy'], function (game, CollectableIt
     function Level4State() {
     }
 
-    function toggleDirection(direction) {
-        if(direction == 'left') {
-            direction = 'right';
-        } else if(direction == 'right') {
-            direction = 'left';
-        } else if(direction == 'up') {
-            direction = 'down';
-        } else {
-            direction = 'up';
-        }
-
-        return direction;
-    }
-
-    Level4State.prototype.init = function (player, controller) {
-        this.player = player;
-        this.controller = controller;
-    };
+    Level4State.prototype = new Parent();
+    Level4State.prototype.constructor = Level4State;
 
     Level4State.prototype.preload = function () {
         this.load.tilemap('LevelFourMap', 'levels/LevelFourMap.json', null, Phaser.Tilemap.TILED_JSON);
@@ -38,6 +22,22 @@ define(['../../game', 'collectableItem', 'enemy'], function (game, CollectableIt
     };
 
     Level4State.prototype.create = function () {
+        Parent.prototype.create.call(this);
+
+        initializeEnemies();
+    };
+
+    Level4State.prototype.update = function () {
+        Parent.prototype.update.call(this, levelFourSecondLayerPlatforms, cookiesGroup);
+
+        moveEnemies.call(this);
+
+        if (this.player.points === 680) {
+            // TODO: Load final state - score, statistic
+        }
+    };
+
+    Level4State.prototype.createMap = function () {
         // Load level four map
         map = this.add.tilemap('LevelFourMap');
         map.addTilesetImage('background', 'countryside-background');
@@ -53,39 +53,21 @@ define(['../../game', 'collectableItem', 'enemy'], function (game, CollectableIt
 
         // Set collision between player and platforms
         map.setCollisionByExclusion([0], true, levelFourSecondLayerPlatforms);
+    };
 
-        //Create cookies
-        cookiesGroup = this.add.group();
-        cookiesGroup.enableBody = true;
-
+    Level4State.prototype.initializePlayer = function () {
         this.player.placeAtMap(100, 250);
         this.player.makeBodyArcade();
         this.player.addAnimations();
 
         // Camera will move with the player
         this.camera.follow(this.player.graphics);
+    };
 
-        this.controller.pause();
-        this.controller.showScore();
-
-        bigBirdsCoordinates = [
-            {x: 1300, y: 350, direction: 'left'},
-            {x: 2200, y: 400, direction: 'up'},
-            {x: 3025, y: 100, direction: 'down'},
-            {x: 2900, y: 350, direction: 'left'}
-        ];
-
-        for (var i = 0; i < bigBirdsCoordinates.length; i += 1) {
-            var x = bigBirdsCoordinates[i].x;
-            var y = bigBirdsCoordinates[i].y;
-            var direction = bigBirdsCoordinates[i].direction;
-
-            var currentBigBird = new BigBird('big-bird' + i, 'big-bird', direction);
-            currentBigBird.placeAtMap(x, y);
-            currentBigBird.makeBodyArcade();
-            //currentBigBird.addAnimations();
-            bigBirds.push(currentBigBird);
-        }
+    Level4State.prototype.initializeCollectableItems = function () {
+        //Create cookies
+        cookiesGroup = this.add.group();
+        cookiesGroup.enableBody = true;
 
         cookiesCoordinates = [
             {x: 105, y: 115},
@@ -127,12 +109,28 @@ define(['../../game', 'collectableItem', 'enemy'], function (game, CollectableIt
         }
     };
 
-    Level4State.prototype.update = function () {
-        game.physics.arcade.collide(this.player.graphics, levelFourSecondLayerPlatforms);
-        game.physics.arcade.overlap(this.player.graphics, cookiesGroup, this.controller.collectItems, null, this);
+    function initializeEnemies() {
+        bigBirdsCoordinates = [
+            {x: 1300, y: 350, direction: 'left'},
+            {x: 2200, y: 400, direction: 'up'},
+            {x: 3025, y: 100, direction: 'down'},
+            {x: 2900, y: 350, direction: 'left'}
+        ];
 
-        this.controller.update(levelFourSecondLayerPlatforms, cookiesGroup);
+        for (var i = 0; i < bigBirdsCoordinates.length; i += 1) {
+            var x = bigBirdsCoordinates[i].x;
+            var y = bigBirdsCoordinates[i].y;
+            var direction = bigBirdsCoordinates[i].direction;
 
+            var currentBigBird = new BigBird('big-bird' + i, 'big-bird', direction);
+            currentBigBird.placeAtMap(x, y);
+            currentBigBird.makeBodyArcade();
+            //currentBigBird.addAnimations();
+            bigBirds.push(currentBigBird);
+        }
+    }
+
+    function moveEnemies() {
         for(var i = 0, len = bigBirds.length; i < len; i += 1) {
             var currentBird = bigBirds[i];
             currentBird.move();
@@ -143,10 +141,21 @@ define(['../../game', 'collectableItem', 'enemy'], function (game, CollectableIt
 
             game.physics.arcade.overlap(this.player.graphics, bigBirds[i].graphics, this.player.kill, null, this.player);
         }
+    }
 
-        if (this.player.points === 680) {
-            // TODO: Load final state - score, statistic
+    function toggleDirection(direction) {
+        if(direction == 'left') {
+            direction = 'right';
+        } else if(direction == 'right') {
+            direction = 'left';
+        } else if(direction == 'up') {
+            direction = 'down';
+        } else {
+            direction = 'up';
         }
-    };
+
+        return direction;
+    }
+
     return Level4State;
 });

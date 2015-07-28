@@ -1,4 +1,4 @@
-define(['../../game', 'collectableItem'], function (game, CollectableItem) {
+define(['../../game', 'collectableItem', 'states/levels/LevelState'], function (game, CollectableItem, Parent) {
     var map,
         levelThreeFirstLayerBackground,
         levelThreeSecondLayerPlatforms,
@@ -8,10 +8,8 @@ define(['../../game', 'collectableItem'], function (game, CollectableItem) {
     function Level3State() {
     };
 
-    Level3State.prototype.init = function (player, controller) {
-        this.player = player;
-        this.controller = controller;
-    };
+    Level3State.prototype = new Parent();
+    Level3State.prototype.constructor = Level3State;
 
     Level3State.prototype.preload = function () {
         this.load.tilemap('LevelThreeMap', 'levels/LevelThreeMap.json', null, Phaser.Tilemap.TILED_JSON);
@@ -20,7 +18,16 @@ define(['../../game', 'collectableItem'], function (game, CollectableItem) {
         this.load.image('shampoo', 'images/L3-CosmeticShop/shampoo.png');
     };
 
-    Level3State.prototype.create = function () {
+    Level3State.prototype.update = function () {
+        Parent.prototype.update.call(this, levelThreeSecondLayerPlatforms, shampoosGroup);
+
+        if (this.player.points === 410) {
+            this.player.level = 4;
+            game.state.start('level4', true, false, this.player, this.controller);
+        }
+    };
+
+    Level3State.prototype.createMap = function () {
         // Load level one map
         map = game.add.tilemap('LevelThreeMap');
         map.addTilesetImage('background', 'background');
@@ -36,7 +43,9 @@ define(['../../game', 'collectableItem'], function (game, CollectableItem) {
 
         // Set collision between player and platforms
         map.setCollisionByExclusion([0], true, levelThreeSecondLayerPlatforms);
+    };
 
+    Level3State.prototype.initializePlayer = function () {
         //Place player graphics at the map
         this.player.placeAtMap(50, 120);
         this.player.makeBodyArcade();
@@ -44,10 +53,9 @@ define(['../../game', 'collectableItem'], function (game, CollectableItem) {
 
         // Camera will move with the player
         this.camera.follow(this.player.graphics);
+    };
 
-        this.controller.pause();
-        this.controller.showScore();
-
+    Level3State.prototype.initializeCollectableItems = function () {
         //Create shampoos
         shampoosGroup = this.add.group();
         shampoosGroup.enableBody = true;
@@ -81,18 +89,6 @@ define(['../../game', 'collectableItem'], function (game, CollectableItem) {
             var y = currentShampoo.y;
 
             new CollectableItem(x, y, shampoosGroup, 'shampoo');
-        }
-    };
-
-    Level3State.prototype.update = function () {
-        game.physics.arcade.collide(this.player.graphics, levelThreeSecondLayerPlatforms);
-        game.physics.arcade.overlap(this.player.graphics, shampoosGroup, this.controller.collectItems, null, this);
-
-        this.controller.update(levelThreeSecondLayerPlatforms, shampoosGroup);
-
-        if (this.player.points === 410) {
-            this.player.level = 4;
-            game.state.start('level4', true, false, this.player, this.controller);
         }
     };
 

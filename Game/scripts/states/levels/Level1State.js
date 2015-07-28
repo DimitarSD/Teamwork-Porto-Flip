@@ -1,4 +1,4 @@
-define(['../../game', 'collectableItem', 'controller'], function (game, CollectableItem, controller) {
+define(['../../game', 'collectableItem', 'controller', 'states/levels/LevelState'], function (game, CollectableItem, controller, Parent) {
     var map,
         levelOneFirstLayerBackground,
         levelOneSecondLayerPlatforms,
@@ -8,10 +8,8 @@ define(['../../game', 'collectableItem', 'controller'], function (game, Collecta
     function Level1State() {
     };
 
-    Level1State.prototype.init = function (player, controller) {
-        this.player = player;
-        this.controller = controller;
-    };
+    Level1State.prototype = new Parent();
+    Level1State.prototype.constructor = Level1State;
 
     Level1State.prototype.preload = function () {
         this.load.tilemap('LevelOneMap', 'levels/LevelOneMap.json', null, Phaser.Tilemap.TILED_JSON);
@@ -20,7 +18,16 @@ define(['../../game', 'collectableItem', 'controller'], function (game, Collecta
         this.load.image('golden-snitch-one', 'images/L1-Telegwarts/first-snitch.png');
     };
 
-    Level1State.prototype.create = function () {
+    Level1State.prototype.update = function () {
+        Parent.prototype.update.call(this, levelOneSecondLayerPlatforms, snitchesGroup);
+
+        if (this.player.points === 210) {
+            this.player.level = 3;
+            game.state.start('level3', true, false, this.player, this.controller);
+        }
+    };
+
+    Level1State.prototype.createMap = function () {
         // Load level one map
         map = this.add.tilemap('LevelOneMap');
         map.addTilesetImage('background', 'dark-night-background');
@@ -36,20 +43,21 @@ define(['../../game', 'collectableItem', 'controller'], function (game, Collecta
 
         // Set collision between player and platforms
         map.setCollisionByExclusion([0], true, levelOneSecondLayerPlatforms);
+    };
 
-        //Create snitches
-        snitchesGroup = this.add.group();
-        snitchesGroup.enableBody = true;
-
+    Level1State.prototype.initializePlayer = function () {
         this.player.placeAtMap(100, 250);
         this.player.makeBodyArcade();
         this.player.addAnimations();
 
         // Camera will move with the player
         this.camera.follow(this.player.graphics);
+    };
 
-        this.controller.pause();
-        this.controller.showScore();
+    Level1State.prototype.initializeCollectableItems = function () {
+        //Create snitches
+        snitchesGroup = this.add.group();
+        snitchesGroup.enableBody = true;
 
         goldenSnitchesCoordinates = [
             {x: 95, y: 150},
@@ -81,18 +89,6 @@ define(['../../game', 'collectableItem', 'controller'], function (game, Collecta
             var y = currentSnitch.y;
 
             new CollectableItem(x, y, snitchesGroup, 'golden-snitch-one');
-        }
-    };
-
-    Level1State.prototype.update = function () {
-        game.physics.arcade.collide(this.player.graphics, levelOneSecondLayerPlatforms);
-        game.physics.arcade.overlap(this.player.graphics, snitchesGroup, this.controller.collectItems, null, this);
-
-        this.controller.update(levelOneSecondLayerPlatforms, snitchesGroup);
-
-        if (this.player.points === 210) {
-            this.player.level = 3;
-            game.state.start('level3', true, false, this.player, this.controller);
         }
     };
 

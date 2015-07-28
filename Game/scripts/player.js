@@ -52,7 +52,6 @@ define(['game'], function (game) {
             this.lives -= 1;
             this.graphics.reset(100, 250);
         } else {
-            console.log(this);
             game.state.start('game-over', true, false, this);
         }
     };
