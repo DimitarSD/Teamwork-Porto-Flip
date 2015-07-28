@@ -48,8 +48,12 @@ define(['game'], function (game) {
     };
 
     Player.prototype.kill = function () {
-        this.lives -= 1;
-        this.graphics.reset(100, 250);
+        if (this.lives) {
+            this.lives -= 1;
+            this.graphics.reset(100, 250);
+        } else {
+            game.state.start('game-over', true, false, this.player);
+        }
     };
 
     Player.prototype.increasePoints = function () {

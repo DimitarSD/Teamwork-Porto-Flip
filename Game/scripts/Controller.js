@@ -69,11 +69,7 @@ define(['game'], function (game) {
         }
 
         if (this.player.graphics.y === 464) {
-            if (this.player.lives) {
-                this.player.kill();
-            } else {
-                game.state.start('game-over', true, false, this.player);
-            }
+            this.player.kill();
         }
     };
 
