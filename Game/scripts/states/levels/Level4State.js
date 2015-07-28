@@ -57,11 +57,8 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
 
     Level4State.prototype.initializePlayer = function () {
         this.player.placeAtMap(100, 250);
-        this.player.makeBodyArcade();
-        this.player.addAnimations();
 
-        // Camera will move with the player
-        this.camera.follow(this.player.graphics);
+        Parent.prototype.initializePlayer.call(this);
     };
 
     Level4State.prototype.initializeCollectableItems = function () {

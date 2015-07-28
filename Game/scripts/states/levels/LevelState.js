@@ -30,12 +30,12 @@ define(['../../game'], function (game) {
         this.engine.showScore();
     };
 
-    /**
-     * To be overridden by derived classes
-     *
-     * @protected
-     */
-    LevelState.prototype.createMap = function () {
+    LevelState.prototype.initializePlayer = function () {
+        this.player.makeBodyArcade();
+        this.player.addAnimations();
+
+        // Camera will move with the player
+        this.camera.follow(this.player.graphics);
     };
 
     /**
@@ -43,7 +43,7 @@ define(['../../game'], function (game) {
      *
      * @protected
      */
-    LevelState.prototype.initializePlayer = function () {
+    LevelState.prototype.createMap = function () {
     };
 
     /**

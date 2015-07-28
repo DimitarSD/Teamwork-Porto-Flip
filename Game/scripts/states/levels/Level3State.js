@@ -48,11 +48,8 @@ define(['../../game', 'collectableItem', 'states/levels/LevelState'], function (
     Level3State.prototype.initializePlayer = function () {
         //Place player graphics at the map
         this.player.placeAtMap(50, 120);
-        this.player.makeBodyArcade();
-        this.player.addAnimations();
 
-        // Camera will move with the player
-        this.camera.follow(this.player.graphics);
+        Parent.prototype.initializePlayer.call(this);
     };
 
     Level3State.prototype.initializeCollectableItems = function () {
