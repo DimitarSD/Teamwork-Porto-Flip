@@ -14,10 +14,11 @@ define(['game'], function (game) {
             spanText,
             playAgainButton,
             playAgainButtonText,
-            exitButton,
-            exitButtonText,
+            saveButton,
+            saveButtonText,
             playButton,
-            returnToMenu;
+            saveCurrentGame,
+            playerCurrentPoints = this.player.points;
 
         span = document.createElement('span');
         spanText = document.createTextNode('Game over');
@@ -30,16 +31,16 @@ define(['game'], function (game) {
         playAgainButtonText = document.createTextNode('Play again');
         playAgainButton.textContent = playAgainButtonText.textContent;
 
-        exitButton = document.createElement('button');
-        exitButton.className = 'hvr-border-fade';
-        exitButton.id = 'exit';
+        saveButton = document.createElement('button');
+        saveButton.className = 'hvr-border-fade';
+        saveButton.id = 'save';
 
-        exitButtonText = document.createTextNode('Exit');
-        exitButton.textContent = exitButtonText.textContent;
+        saveButtonText = document.createTextNode('Save');
+        saveButton.textContent = saveButtonText.textContent;
 
         div.appendChild(span);
         div.appendChild(playAgainButton);
-        div.appendChild(exitButton);
+        div.appendChild(saveButton);
 
         if (this.player.level === 1) {
             div.style.backgroundImage = "url('images/Game Over - messages background/L1-hogwarts.jpg')";
@@ -57,20 +58,52 @@ define(['game'], function (game) {
         playButton.onclick = function () {
             div.removeChild(span);
             div.removeChild(playAgainButton);
-            div.removeChild(exitButton);
+            div.removeChild(saveButton);
             body.removeChild(div);
             game.state.start('play');
         };
 
-        returnToMenu = document.getElementById('exit');
-        returnToMenu.onclick = function () {
+        saveCurrentGame = document.getElementById('save');
+        saveCurrentGame.onclick = function () {
             div.removeChild(span);
             div.removeChild(playAgainButton);
-            div.removeChild(exitButton);
-            body.removeChild(div);
-            game.state.start('menu');
+            div.removeChild(saveButton);
+            
+            saveResult(playerCurrentPoints);
         };
     };
+
+    function saveResult(playerCurrentPoints) {
+        createSaveGameWindow();
+
+        var saveButton = document.getElementById('save-game');
+
+        saveButton.onclick = function () {
+            var topScores = localStorage,
+                inputValue = document.getElementById('enter-name-input').value;
+            
+            topScores.setItem(inputValue, playerCurrentPoints);
+        };
+    }
+
+    function createSaveGameWindow() {
+        var span = document.createElement('span'),
+            input = document.createElement('input'),
+            saveGameButton = document.createElement('button');
+
+        span.setAttribute('id', 'enter-name');
+        span.textContent = 'Enter name';
+
+        input.setAttribute('id', 'enter-name-input');
+
+        saveGameButton.setAttribute('id', 'save-game');
+        saveGameButton.className = 'hvr-border-fade';
+        saveGameButton.textContent = 'Save Game';
+
+        div.appendChild(span);
+        div.appendChild(input);
+        div.appendChild(saveGameButton);
+    }
 
     return GameOverState;
 });

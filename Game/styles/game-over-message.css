@@ -72,3 +72,23 @@ button:focus {
 .hvr-border-fade:hover, .hvr-border-fade:focus, .hvr-border-fade:active {
   box-shadow: inset 0 0 0 4px #21CC0F, 0 0 1px rgba(0, 0, 0, 0);
 }
+
+#enter-name {
+	margin-top: 25px;
+}
+
+#enter-name-input {
+	display: block;
+	height: 20px;
+	margin-top: 15px;
+	margin-left: 115px;
+	font-family: Consolas;
+	font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#save-game {
+	margin-top: 15px;
+	margin-left: 160px;
+}
