@@ -40,6 +40,19 @@ define(['game'], function (game) {
             }
         ];
 
+        addCredits(teamMembers);
+        showNinja();
+    };
+
+    CreditsState.prototype.update = function () {
+        if (escapeKey.isDown) {
+            removeCredits();
+            hideNinja();
+            game.state.start('menu');
+        }
+    };
+
+    function addCredits(teamMembers) {
         for (var i = 0; i < teamMembers.length; i += 1) {
             var li = document.createElement('li'),
                 a = document.createElement('a');
@@ -52,11 +65,10 @@ define(['game'], function (game) {
         }
 
         body.appendChild(ul);
-    };
-
-    CreditsState.prototype.update = function () {
-        if (escapeKey.isDown) {
-            var li = ul.getElementsByTagName('li'),
+    }
+    
+    function removeCredits() {
+        var li = ul.getElementsByTagName('li'),
                 len = li.length;
                 
             for (var i = 0; i < len; i += 1) {
@@ -69,10 +81,31 @@ define(['game'], function (game) {
             }
             
             body.removeChild(ul);
+    }
+    
+    function showNinja() {
+        var svg = document.getElementById('ninja');
+        svg.style.zIndex = '1';
+        
+        hideSamuraiSword();
+    }
 
-            game.state.start('menu');
-        }
-    };
+    function hideNinja() {
+        var svg = document.getElementById('ninja');
+        svg.style.zIndex = '0';
+        
+        showSamuraiSword();
+    }
+
+    function showSamuraiSword() {
+        var svg = document.getElementById('samurai-sword');
+        svg.style.zIndex = '1';
+    }
+    
+    function hideSamuraiSword() {
+        var svg = document.getElementById('samurai-sword');
+        svg.style.zIndex = '0';
+    }
 
     return CreditsState;
 });

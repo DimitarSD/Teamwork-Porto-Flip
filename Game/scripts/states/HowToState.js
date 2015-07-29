@@ -18,6 +18,8 @@ define(['game', 'player'], function (game, Player) {
     };
 
     HowToState.prototype.create = function () {
+        hideSamuraiSword();
+        
         /*
         // TODO replace with HowToTitle and description
         this.cursors = game.input.keyboard.createCursorKeys();
@@ -96,10 +98,21 @@ define(['game', 'player'], function (game, Player) {
         }
 
         if (escapeKey.isDown) {
+            showSamuraiSword();
             game.state.start('menu');
         }
 
     };
+
+    function showSamuraiSword() {
+        var svg = document.getElementById('samurai-sword');
+        svg.style.zIndex = '1';
+    }
+    
+    function hideSamuraiSword() {
+        var svg = document.getElementById('samurai-sword');
+        svg.style.zIndex = '0';
+    }
 
     return HowToState;
 });

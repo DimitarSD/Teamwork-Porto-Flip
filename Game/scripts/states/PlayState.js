@@ -3,6 +3,7 @@ define(['game', 'player', 'engine'], function (game, Player, Engine) {
     };
 
     PlayState.prototype.preload = function () {
+        hideSamuraiSword();
         this.load.spritesheet('telerik-ninja', 'images/L1-Telegwarts/TANinjaSprite_small(32x48).ss.png', 32, 48);
     };
 
@@ -26,6 +27,11 @@ define(['game', 'player', 'engine'], function (game, Player, Engine) {
         player.level = 1;
         game.state.start('level1', true, false, player, engine);
     };
+
+    function hideSamuraiSword() {
+        var svg = document.getElementById('samurai-sword');
+        svg.style.zIndex = '0';
+    }
 
     return PlayState;
 });
