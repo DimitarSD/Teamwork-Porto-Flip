@@ -17,11 +17,13 @@ define(['game'], function (game) {
         this.graphics.body.collideWorldBounds = true;
     };
 
-    //Enemy.prototype.addAnimations = function () {
-    //    // The animations of flying left and right
-    //    this.graphics.animations.add('left', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 10, true);
-    //    this.graphics.animations.add('right', [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], 10, true);
-    //};
+    Enemy.prototype.addAnimations = function () {
+        // The animations of flying left and right
+        this.graphics.animations.add('left', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 20, true);
+        this.graphics.animations.add('up', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 20, true);
+        this.graphics.animations.add('right', [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], 20, true);
+        this.graphics.animations.add('down', [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], 20, true);
+    };
 
     Enemy.prototype.move = function () {
         var dirIndex = 1;

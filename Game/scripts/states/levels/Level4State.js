@@ -15,10 +15,10 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
 
     Level4State.prototype.preload = function () {
         this.load.tilemap('LevelFourMap', 'levels/LevelFourMap.json', null, Phaser.Tilemap.TILED_JSON);
-        this.load.image('countryside-background', 'images/L4-BigBirdTown/l4-background-001.jpg');
+        this.load.image('countryside-background', 'images/L4-BigBirdTown/l4-background.png');
         this.load.image('wooden-platform', 'images/L4-BigBirdTown/Platforms.png');
         this.load.image('sweet-cookie', 'images/L4-BigBirdTown/cookie1.png');
-        this.load.spritesheet('big-bird', 'images/L4-BigBirdTown/bird.ss.png', 100, 100);
+        this.load.spritesheet('big-bird', 'images/L4-BigBirdTown/bird(34x32).ss.png', 34, 32);
     };
 
     Level4State.prototype.create = function () {
@@ -122,7 +122,7 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
             var currentBigBird = new BigBird('big-bird' + i, 'big-bird', direction);
             currentBigBird.placeAtMap(x, y);
             currentBigBird.makeBodyArcade();
-            //currentBigBird.addAnimations();
+            currentBigBird.addAnimations();
             bigBirds.push(currentBigBird);
         }
     }
