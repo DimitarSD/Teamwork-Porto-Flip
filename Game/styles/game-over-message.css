@@ -8,19 +8,18 @@ canvas {
 	z-index: 0;
 }
 
-div {
+#message-window {
 	position: fixed;
 	width: 400px;
 	height: 200px;
 	margin-left: 300px;
 	margin-top: 150px;
-	border: 1px solid black;
 	border-radius: 8px;
 	background-size: 400px 200px;
 	z-index: 1;
 }
 
-span {
+#game-over-title {
 	display: block;
 	margin-left: 84px;
 	margin-top: 50px;
@@ -31,7 +30,7 @@ span {
 	text-shadow: 4px 0 green, 0 1px green, 1px 0 black, 0 -1px black;
 }
 
-button {
+.message-game-over-button {
 	margin-top: 30px;
 	margin-left: 68px;
 	font-size: 16px;
@@ -50,7 +49,7 @@ button {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0484e5', endColorstr='#011033',GradientType=0 ); /* IE6-9 */
 }
 
-button:focus {
+.message-game-over-button:focus {
 	outline:0;
 }
 
@@ -75,6 +74,7 @@ button:focus {
 
 #enter-name {
 	margin-top: 25px;
+	color: white;
 }
 
 #enter-name-input {

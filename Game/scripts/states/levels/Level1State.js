@@ -1,4 +1,4 @@
-define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], function (game, CollectableItem, Engine, Parent) {
+define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState', 'states/prehistory/Prehistory1State'], function (game, CollectableItem, Engine, Parent) {
     var map,
         levelOneFirstLayerBackground,
         levelOneSecondLayerPlatforms,
@@ -43,6 +43,8 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], 
 
         // Set collision between player and platforms
         map.setCollisionByExclusion([0], true, levelOneSecondLayerPlatforms);
+
+        game.state.start('prehistory1');
     };
 
     Level1State.prototype.initializePlayer = function () {
