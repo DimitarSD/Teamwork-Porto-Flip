@@ -10,11 +10,11 @@ canvas {
 
 #prehistory-main-background {
 	position: fixed;
-	width: 996px;
-	height: 496px;
-	margin-left: 2px;
-	margin-top: 2px;
-	background-size: 996px 496px;
+	width: 1000px;
+	height: 500px;
+	margin-left: 0px;
+	margin-top: 0px;
+	background-size: 1000px 500px;
 	z-index: 1;
 }
 

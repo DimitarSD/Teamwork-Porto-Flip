@@ -1,4 +1,4 @@
-define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState', 'states/prehistory/Prehistory1State'], function (game, CollectableItem, Engine, Parent) {
+define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], function (game, CollectableItem, Engine, Parent) {
     var map,
         levelOneFirstLayerBackground,
         levelOneSecondLayerPlatforms,
@@ -44,7 +44,7 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState', '
         // Set collision between player and platforms
         map.setCollisionByExclusion([0], true, levelOneSecondLayerPlatforms);
         
-        game.state.start('prehistory1');
+        showLevelPrehistory();
     };
 
     Level1State.prototype.initializePlayer = function () {
@@ -90,6 +90,63 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState', '
             new CollectableItem(x, y, snitchesGroup, 'golden-snitch-one');
         }
     };
+
+    function showLevelPrehistory() {
+        var body = document.getElementsByTagName('body')[0],
+            div = document.createElement('div'),
+            span,
+            spanText,
+            divPrehistory,
+            spanInDivPrehistory,
+            spanInDivPrehistoryText,
+            continueGameButton,
+            continueGameButtonText,
+            playButton;
+
+        div.id = 'prehistory-main-background';
+
+        span = document.createElement('span');
+        span.id = 'current-level';
+        spanText = document.createTextNode('Level 1 ');
+        span.textContent = spanText.textContent;
+
+        divPrehistory = document.createElement('div');
+        divPrehistory.id = 'divPrehistory';
+        divPrehistory.style.backgroundImage = "url('images/Prehistory/paper-roll.png')";
+
+        spanInDivPrehistory = document.createElement('span');
+        spanInDivPrehistory.id = 'prehistory-span-text';
+        spanInDivPrehistoryText = document.createTextNode('His first exam takes place in Telegwarts. ' +
+            'Saddy must collect all snitches so he can master the first part of S# language. Can you help him?');
+
+        spanInDivPrehistory.textContent = spanInDivPrehistoryText.textContent;
+
+        divPrehistory.appendChild(spanInDivPrehistory);
+
+        continueGameButton = document.createElement('button');
+        continueGameButton.className = 'hvr-border-fade';
+        continueGameButton.id = 'continue';
+
+        continueGameButtonText = document.createTextNode('Continue');
+        continueGameButton.textContent = continueGameButtonText.textContent;
+
+        div.appendChild(span);
+        div.appendChild(divPrehistory);
+        div.appendChild(continueGameButton);
+
+        div.style.backgroundImage = "url('images/Game Over - messages background/L1-hogwarts.jpg')";
+
+        body.appendChild(div);
+
+        playButton = document.getElementById('continue');
+        playButton.onclick = function () {
+            div.removeChild(span);
+            divPrehistory.removeChild(spanInDivPrehistory);
+            div.removeChild(divPrehistory);
+            div.removeChild(continueGameButton);
+            body.removeChild(div);
+        };
+    }
 
     return Level1State;
 });
