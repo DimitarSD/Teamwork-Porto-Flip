@@ -2,7 +2,9 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], 
     var map,
         levelTwoFirstLayerBackground,
         levelTwoSecondLayerPlatforms,
+        levelThreeSecondLayerEnemies,
         snitchesGroup,
+        enemiesGroup,
         goldenSnitchesCoordinates;
 
     function Level2State() {
@@ -20,6 +22,7 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], 
 
     Level2State.prototype.update = function () {
         Parent.prototype.update.call(this, levelTwoSecondLayerPlatforms, snitchesGroup);
+        this.game.physics.arcade.collide(this, enemiesGroup);
 
         if (this.player.points === 210) {
             this.player.level = 3;
@@ -41,8 +44,17 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], 
         levelTwoSecondLayerPlatforms.resizeWorld();
         levelTwoSecondLayerPlatforms.wrap = true;
 
+        enemiesGroup = this.add.group();
+        enemiesGroup.enableBody = true;
+        var result = game.findObjectsByType('enemy', map, 'LevelTwo - enemies');
+
+        result.forEach(function(element){
+            game.createFromTiledObject(element, enemiesGroup);
+        }, game);
+
         // Set collision between player and platforms
         map.setCollisionByExclusion([0], true, levelTwoSecondLayerPlatforms);
+        //map.setCollisionByExclusion([1], true, enemiesGroup);
     };
 
     Level2State.prototype.initializePlayer = function () {

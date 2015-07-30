@@ -26,7 +26,31 @@
          "draworder":"topdown",
          "height":16,
          "name":"LevelTwo - enemies",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":1,
+                 "name":"",
+                 "polyline":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":212,
+                         "y":2
+                        }],
+                 "properties":
+                    {
+                     "type":"enemy"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":7,
+                 "y":411
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -34,7 +58,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":2,
  "orientation":"orthogonal",
  "properties":
     {

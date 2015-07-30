@@ -56,7 +56,7 @@ define(['game'], function (game) {
         for (var i = 0; i < teamMembers.length; i += 1) {
             var li = document.createElement('li'),
                 a = document.createElement('a');
-                
+
             a.setAttribute('href', teamMembers[i].githubProfile);
             a.textContent = teamMembers[i].name;
             li.textContent = '+ ';
@@ -66,34 +66,34 @@ define(['game'], function (game) {
 
         body.appendChild(ul);
     }
-    
+
     function removeCredits() {
         var li = ul.getElementsByTagName('li'),
                 len = li.length;
-                
+
             for (var i = 0; i < len; i += 1) {
                 var a = li[i].getElementsByTagName('a')[0];
                 li[i].removeChild(a);
-            }    
-            
+            }
+
             while (ul.firstChild) {
                 ul.removeChild(ul.firstChild);
             }
-            
+
             body.removeChild(ul);
     }
-    
+
     function showNinja() {
         var svg = document.getElementById('ninja');
         svg.style.zIndex = '1';
-        
+
         hideSamuraiSword();
     }
 
     function hideNinja() {
         var svg = document.getElementById('ninja');
         svg.style.zIndex = '0';
-        
+
         showSamuraiSword();
     }
 
@@ -101,7 +101,7 @@ define(['game'], function (game) {
         var svg = document.getElementById('samurai-sword');
         svg.style.zIndex = '1';
     }
-    
+
     function hideSamuraiSword() {
         var svg = document.getElementById('samurai-sword');
         svg.style.zIndex = '0';
