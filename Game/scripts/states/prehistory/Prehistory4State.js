@@ -2,6 +2,8 @@ define(['game'], function (game) {
     var body = document.getElementsByTagName('body')[0],
         div = document.createElement('div');
 
+        div.id = 'prehistory-main-background';
+
     function Prehistory4State() {
     };
 
@@ -9,43 +11,54 @@ define(['game'], function (game) {
         var span,
             spanText,
             divPrehistory,
-            divPrehistoryText,
-            playGameButton,
-            playGameButtonText,
+            spanInDivPrehistory,
+            spanInDivPrehistoryText,
+            continueGameButton,
+            continueGameButtonText,
             playButton;
 
         span = document.createElement('span');
-        spanText = document.createTextNode('Prehistory');
+        span.id = 'current-level';
+        spanText = document.createTextNode('Level 4');
         span.textContent = spanText.textContent;
 
         divPrehistory = document.createElement('div');
-        divPrehistoryText = document.createTextNode('The  Cookie monster likes cookies, duh…
-Yet the Big Bird (the Big B) holds all the cookies. Big B has a task for the Cookie monster (Cookiemon), in order to give him cookies. 
-Your task is to collect all the cookies and beware of angry birds!');
-        divPrehistory.textContent = divPrehistoryText.textContent;
         divPrehistory.id = 'divPrehistory';
         divPrehistory.style.backgroundImage = "url('images/Prehistory/paper-roll.png')";     
+        
+        spanInDivPrehistory = document.createElement('span');
+        spanInDivPrehistory.id = 'prehistory-span-text';
+        spanInDivPrehistoryText = document.createTextNode('Wooohooo!!! Saddy is smarter than ever now and he is just one step away ' +
+            'from defeating Ivomort. But there is problem... Ivomort is not alone. His allies Doncho Malfoy, Niki Snape and ' +
+            'Evlogi Lestrange have decided to stop Kopper in his final exam. They decided to use the help of Coockie monster... ' +
+            'and he likes cookies, duuuhhh… Yet if Saddy wants to success in his final exam he must collect all cockies to ' +
+            'bribe the Coockie monster and to master the CoockieScript so he can be able to defeat Ivomort once and for all. ' +
+            'But lookout the Coockie monster has slaves - angry birds called "Aidi". They will trying to stop Saddy.');
+            
+        spanInDivPrehistory.textContent = spanInDivPrehistoryText.textContent;
 
-        playGameButton = document.createElement('button');
-        playGameButton.className = 'hvr-border-fade';
-        playGameButton.id = 'play-game';
+        divPrehistory.appendChild(spanInDivPrehistory);
 
-        playGameButtonText = document.createTextNode('Play Now');
-        playGameButton.textContent = playGameButtonText.textContent;
+        continueGameButton = document.createElement('button');
+        continueGameButton.className = 'hvr-border-fade';
+        continueGameButton.id = 'continue';
+
+        continueGameButtonText = document.createTextNode('Continue');
+        continueGameButton.textContent = continueGameButtonText.textContent;
 
         div.appendChild(span);
         div.appendChild(divPrehistory);
-        div.appendChild(playGameButton);
+        div.appendChild(continueGameButton);
 
         div.style.backgroundImage = "url('images/Game Over - messages background/L4-bigBird.jpg')";
 
         body.appendChild(div);
 
-        playButton = document.getElementById('play-game');
+        playButton = document.getElementById('continue');
         playButton.onclick = function () {
             div.removeChild(span);
             div.removeChild(divPrehistory);
-            div.removeChild(playGameButton);
+            div.removeChild(continueGameButton);
             body.removeChild(div);
             game.state.start('play');
         };

@@ -43,7 +43,7 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState', '
 
         // Set collision between player and platforms
         map.setCollisionByExclusion([0], true, levelOneSecondLayerPlatforms);
-
+        
         game.state.start('prehistory1');
     };
 

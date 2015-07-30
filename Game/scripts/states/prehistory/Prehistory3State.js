@@ -2,6 +2,8 @@ define(['game'], function (game) {
     var body = document.getElementsByTagName('body')[0],
         div = document.createElement('div');
 
+    div.id = 'prehistory-main-background';
+
     function Prehistory3State() {
     };
 
@@ -9,43 +11,54 @@ define(['game'], function (game) {
         var span,
             spanText,
             divPrehistory,
-            divPrehistoryText,
-            playGameButton,
-            playGameButtonText,
+            spanInDivPrehistory,
+            spanInDivPrehistoryText,
+            continueGameButton,
+            continueGameButtonText,
             playButton;
 
         span = document.createElement('span');
-        spanText = document.createTextNode('Prehistory');
+        span.id = 'current-level';
+        spanText = document.createTextNode('Level 3');
         span.textContent = spanText.textContent;
 
         divPrehistory = document.createElement('div');
-        divPrehistoryText = document.createTextNode('Enough  with these silly games – StarCraft, MarCraft...! Let’s do something for the girls! We need to create cosmetics shop!
-In the shop there are a lot of shampoos, many different types and aroma. 
-Your task is to get all the shampoos, you must help your friends to bathe more often!');
-        divPrehistory.textContent = divPrehistoryText.textContent;
         divPrehistory.id = 'divPrehistory';
-        divPrehistory.style.backgroundImage = "url('images/Prehistory/paper-roll.png')";     
+        divPrehistory.style.backgroundImage = "url('images/Prehistory/paper-roll.png')";
+        
+        spanInDivPrehistory = document.createElement('span');
+        spanInDivPrehistory.id = 'prehistory-span-text';
+        spanInDivPrehistoryText = document.createTextNode('Enough  with these silly games – StarCraft, MarCraft...! Let’s do ' +
+            'something for the girls! We need to create a cosmetics shop! Wait a minute! A cosmetics shop! ' +
+            'What the hell!?!?!Yeah, that right! Everyone can learn S# only a few are those who can master the OOP that goes with it. ' +
+            'Saddy Kopper is one of them. But in that crazy girl dimension (somewhere in Waka waka eh eh) the young Kopper must ' +
+            'create a cosmestics shop. In order to complete this task, he needs to collect all shampoos. If the Amazons are merciful ' +
+            '(they will be - Saddy is very charming), they will reveal the secret of mastering OOP.');
 
-        playGameButton = document.createElement('button');
-        playGameButton.className = 'hvr-border-fade';
-        playGameButton.id = 'play-game';
+        spanInDivPrehistory.textContent = spanInDivPrehistoryText.textContent;
 
-        playGameButtonText = document.createTextNode('Play Now');
-        playGameButton.textContent = playGameButtonText.textContent;
+        divPrehistory.appendChild(spanInDivPrehistory);
+
+        continueGameButton = document.createElement('button');
+        continueGameButton.className = 'hvr-border-fade';
+        continueGameButton.id = 'continue';
+
+        continueGameButtonText = document.createTextNode('Continue');
+        continueGameButton.textContent = continueGameButtonText.textContent;
 
         div.appendChild(span);
         div.appendChild(divPrehistory);
-        div.appendChild(playGameButton);
+        div.appendChild(continueGameButton);
 
         div.style.backgroundImage = "url('images/Game Over - messages background/L3-beach.jpg')";
 
         body.appendChild(div);
 
-        playButton = document.getElementById('play-game');
+        playButton = document.getElementById('continue');
         playButton.onclick = function () {
             div.removeChild(span);
             div.removeChild(divPrehistory);
-            div.removeChild(playGameButton);
+            div.removeChild(continueGameButton);
             body.removeChild(div);
             game.state.start('play');
         };
