@@ -19,7 +19,8 @@ define(['game'], function (game) {
         span.textContent = spanText.textContent;
 
         divPrehistory = document.CreateElement('div');
-        divPrehistoryText = document.createTextNode('Once upon a time ...');
+        divPrehistoryText = document.createTextNode('At long last scientist found out that the cats have an evil plan to enslave all of humanity. The sinister organization Al cat-qaeda have been targeting high profile programmers and taking them down (a.k.a brutally murdering them), because they are the only ones that can ruin their plans.
+Your task is ...');
         divPrehistory.textContent = divPrehistoryText.textContent;
         divPrehistory.id = 'divPrehistory';
         divPrehistory.style.backgroundImage = "url('images/Prehistory/paper-roll.png')";     
