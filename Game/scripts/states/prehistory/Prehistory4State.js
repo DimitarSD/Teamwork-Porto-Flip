@@ -18,7 +18,7 @@ define(['game'], function (game) {
         spanText = document.createTextNode('Prehistory');
         span.textContent = spanText.textContent;
 
-        divPrehistory = document.CreateElement('div');
+        divPrehistory = document.createElement('div');
         divPrehistoryText = document.createTextNode('The  Cookie monster likes cookies, duh…
 Yet the Big Bird (the Big B) holds all the cookies. Big B has a task for the Cookie monster (Cookiemon), in order to give him cookies. 
 Your task is to collect all the cookies and beware of angry birds!');

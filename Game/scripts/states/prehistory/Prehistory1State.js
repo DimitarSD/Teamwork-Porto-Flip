@@ -18,7 +18,7 @@ define(['game'], function (game) {
         spanText = document.createTextNode('Prehistory');
         span.textContent = spanText.textContent;
 
-        divPrehistory = document.CreateElement('div');
+        divPrehistory = document.createElement('div');
         divPrehistoryText = document.createTextNode('In the magical land of Telegwarts there was a great magician, named Saddy Kopper. He is a nice little boy with great intentions and Odal rune* tattooed on his forehead. Saddy always uses his skills for good purposes like solving mathematical tasks. 
 In his spare time  Saddy Kopper likes to have fun by catching flying snitches and count them.
 ');

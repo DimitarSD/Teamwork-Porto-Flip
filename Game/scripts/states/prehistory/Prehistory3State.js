@@ -18,7 +18,7 @@ define(['game'], function (game) {
         spanText = document.createTextNode('Prehistory');
         span.textContent = spanText.textContent;
 
-        divPrehistory = document.CreateElement('div');
+        divPrehistory = document.createElement('div');
         divPrehistoryText = document.createTextNode('Enough  with these silly games – StarCraft, MarCraft...! Let’s do something for the girls! We need to create cosmetics shop!
 In the shop there are a lot of shampoos, many different types and aroma. 
 Your task is to get all the shampoos, you must help your friends to bathe more often!');

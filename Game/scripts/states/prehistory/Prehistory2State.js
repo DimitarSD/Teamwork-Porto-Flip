@@ -18,7 +18,7 @@ define(['game'], function (game) {
         spanText = document.createTextNode('Prehistory');
         span.textContent = spanText.textContent;
 
-        divPrehistory = document.CreateElement('div');
+        divPrehistory = document.createElement('div');
         divPrehistoryText = document.createTextNode('At  long last scientist found out that the cats have an evil plan to enslave all of humanity. The sinister organization Al cat-qaeda have been targeting high profile programmers and taking them down (a.k.a brutally murdering them), because they are the only ones that can ruin their plans.
 Your task is ...');
         divPrehistory.textContent = divPrehistoryText.textContent;
