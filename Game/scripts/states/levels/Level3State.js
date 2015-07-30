@@ -113,7 +113,7 @@ define(['../../game', 'collectableItem', 'states/levels/LevelState'], function (
         divPrehistory = document.createElement('div');
         divPrehistory.id = 'divPrehistory';
         divPrehistory.style.backgroundImage = "url('images/Prehistory/paper-roll.png')";
-        
+
         spanInDivPrehistory = document.createElement('span');
         spanInDivPrehistory.id = 'prehistory-span-text';
         spanInDivPrehistoryText = document.createTextNode('Enough  with these silly games – StarCraft, MarCraft...! Let’s do ' +
@@ -149,7 +149,7 @@ define(['../../game', 'collectableItem', 'states/levels/LevelState'], function (
             div.removeChild(continueGameButton);
             body.removeChild(div);
         };
-    
+    }
     return Level3State;
 });
 
