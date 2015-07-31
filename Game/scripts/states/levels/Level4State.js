@@ -33,7 +33,7 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
         moveEnemies.call(this);
 
         if (this.player.points === 680) {
-            // TODO: Load final state - score, statistic
+            showWinningMessage();
         }
     };
 
@@ -214,6 +214,35 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
             div.removeChild(continueGameButton);
             body.removeChild(div);
         };
+    }
+    
+    function showWinningMessage() {
+        var body = document.getElementsByTagName('body')[0],
+            div = document.createElement('div'),
+            divPrehistory,
+            spanInDivPrehistory,
+            spanInDivPrehistoryText;
+
+        div.id = 'prehistory-main-background';
+
+        divPrehistory = document.createElement('div');
+        divPrehistory.id = 'divPrehistory';
+        divPrehistory.style.backgroundImage = "url('images/Prehistory/paper-roll.png')";
+
+        spanInDivPrehistory = document.createElement('span');
+        spanInDivPrehistory.id = 'prehistory-span-text';
+        spanInDivPrehistoryText = document.createTextNode('Wooohooo!!! Amazing! You helped Saddy Kopper to graduate the Odal ' +
+            'Rune academy. Now he is very powerful. Watchout Ivomort!');
+
+        spanInDivPrehistory.textContent = spanInDivPrehistoryText.textContent;
+
+        divPrehistory.appendChild(spanInDivPrehistory);
+
+        div.appendChild(divPrehistory);
+
+        div.style.backgroundImage = "url('images/Game Over - messages background/L4-bigBird.jpg')";
+
+        body.appendChild(div);
     }
     
     return Level4State;
