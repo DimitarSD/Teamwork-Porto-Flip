@@ -21,7 +21,7 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], 
     Level1State.prototype.update = function () {
         Parent.prototype.update.call(this, levelOneSecondLayerPlatforms, snitchesGroup);
 
-        if (this.player.points === 10) {
+        if (this.player.points === 0) {
             this.player.level = 2;
             game.state.start('level2', true, false, this.player, this.engine);
         }

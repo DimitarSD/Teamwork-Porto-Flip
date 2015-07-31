@@ -18,11 +18,11 @@ define(['../../game'], function (game) {
         this.initializeCollectableItems();
     };
 
-    LevelState.prototype.update = function (secondLayerPlatfrom, collection) {
-        game.physics.arcade.collide(this.player.graphics, secondLayerPlatfrom);
+    LevelState.prototype.update = function (secondLayerPlatform, collection) {
+        game.physics.arcade.collide(this.player.graphics, secondLayerPlatform);
         game.physics.arcade.overlap(this.player.graphics, collection, this.engine.collectItems, null, this);
 
-        this.engine.update(secondLayerPlatfrom, collection);
+        this.engine.update(secondLayerPlatform, collection);
     };
 
     LevelState.prototype.initializeEngine = function () {

@@ -21,7 +21,7 @@ define(['../../game', 'collectableItem', 'states/levels/LevelState'], function (
     Level3State.prototype.update = function () {
         Parent.prototype.update.call(this, levelThreeSecondLayerPlatforms, shampoosGroup);
 
-        if (this.player.points === 410) {
+        if (this.player.points === 10) {
             this.player.level = 4;
             game.state.start('level4', true, false, this.player, this.engine);
         }

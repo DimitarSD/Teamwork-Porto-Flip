@@ -46,6 +46,11 @@ define(['game'], function (game) {
         scoreText.text = 'Score: ' + this.player.points;
     };
 
+    Engine.prototype.meetFriend = function () {
+        this.player.increasePoints().increasePoints().increasePoints();;
+        scoreText.text = 'Score: ' + this.player.points;
+    };
+
     Engine.prototype.update = function () {
         this.player.graphics.body.velocity.x = 0;
         cursors = game.input.keyboard.createCursorKeys();

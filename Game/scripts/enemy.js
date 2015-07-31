@@ -6,7 +6,7 @@ define(['game'], function (game) {
     }
 
     Enemy.prototype.placeAtMap = function (x, y) {
-        this.graphics = game.add.sprite(x, y, 'big-bird');
+        this.graphics = game.add.sprite(x, y, this.type);
     };
 
     Enemy.prototype.makeBodyArcade = function () {

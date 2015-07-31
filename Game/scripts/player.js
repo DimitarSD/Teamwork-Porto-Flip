@@ -23,8 +23,8 @@ define(['game'], function (game) {
 
     Player.prototype.addAnimations = function () {
         // The animations of walking left and right
-        this.graphics.animations.add('left', [0, 1, 2, 3], 10, true);
-        this.graphics.animations.add('right', [5, 6, 7, 8], 10, true);
+        this.graphics.animations.add('left', [0, 1, 2, 3], 6, true);
+        this.graphics.animations.add('right', [5, 6, 7, 8], 6, true);
     };
 
     Player.prototype.move = function (direction) {
@@ -58,6 +58,8 @@ define(['game'], function (game) {
 
     Player.prototype.increasePoints = function () {
         this.points += 10;
+
+        return this;
     };
 
     return Player;
