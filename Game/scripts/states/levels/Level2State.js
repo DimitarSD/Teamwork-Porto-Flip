@@ -19,9 +19,9 @@ define(['../../game', 'collectableItem', '../../nyanEnemy', '../../nyanFriend', 
         this.load.tilemap('LevelTwoMap', 'levels/LevelTwoMap.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('background', 'images/L2-EvilCats/antelope-canyon-6.jpg');
         this.load.image('platform', 'images/L2-EvilCats/platforms-stones.png');
-        this.load.image('rainbow', 'images/L4-BigBirdTown/rainbow.png');
-        this.load.spritesheet('nyan-friend', 'images/L4-BigBirdTown/nyan-friend76x32.png', 76, 32);
-        this.load.spritesheet('nyan-enemy', 'images/L4-BigBirdTown/nyan-enemy76x32.png', 76, 32);
+        this.load.image('rainbow', 'images/L2-EvilCats/rainbow.png');
+        this.load.spritesheet('nyan-friend', 'images/L2-EvilCats/nyan-friend76x32.png', 76, 32);
+        this.load.spritesheet('nyan-enemy', 'images/L2-EvilCats/nyan-enemy76x32.png', 76, 32);
     };
 
     Level2State.prototype.create = function () {
