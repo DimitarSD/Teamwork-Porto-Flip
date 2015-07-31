@@ -66,5 +66,6 @@ The game is supported in Google Chrome, Mozilla Firefox, Internet Explorer 9/10/
 ### Credits
 
 * https://brucestarkbio.files.wordpress.com
+*  http://dodria.deviantart.com
 * http://doranhannes.com
-* http://dodria.deviantart.com
+* http://www.lughertexture.com/
