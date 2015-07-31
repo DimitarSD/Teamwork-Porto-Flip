@@ -32,6 +32,10 @@ The game is supported in Google Chrome, Mozilla Firefox, Internet Explorer 9/10/
 
 [Thorougher description of gameplay and design]
 
+##Title screen
+
+![Title screen](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/title-screen.jpg)
+
 
 ### Credits
 
