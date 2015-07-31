@@ -7,8 +7,11 @@
 - Ivelina Popova
 - Iliana Bobeva
 - Tatyana Rangelova
+- 
 *****************************************
+
 # Ninja Flipper Game
+
 *****************************************
 
 Ninja Flipper is an eclectic arcade platform-type game, loosely based on Telerik Academy exam experiences. 
