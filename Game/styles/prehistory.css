@@ -29,13 +29,28 @@ canvas {
 	z-index: 1;
 }
 
+#divMainPrehistory {
+	position: fixed;
+	width: 810px;
+	height: 350px;
+	margin-left: 85px;
+	margin-top: 35px;
+	padding: 20px;
+	background-size: 850px 390px;
+	z-index: 1;
+}
+
+#continue-main-prehistory {
+	margin-top: 430px;
+}
+
 #prehistory-span-text {
 	display: block;
 	width: 300;
 	height: 250;
 	margin-left: 70px;
 	margin-right: 65px;
-	margin-top: 15px;
+	margin-top: 20px;
 	margin-bottom: 15px;
 	text-align: center;
 	font-family: Consolas;
