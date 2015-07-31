@@ -43,8 +43,6 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], 
 
         // Set collision between player and platforms
         map.setCollisionByExclusion([0], true, levelOneSecondLayerPlatforms);
-
-        showMainPrehistory();
     };
 
     Level1State.prototype.initializePlayer = function () {
@@ -90,119 +88,6 @@ define(['../../game', 'collectableItem', 'engine', 'states/levels/LevelState'], 
             new CollectableItem(x, y, snitchesGroup, 'golden-snitch-one');
         }
     };
-
-    function showLevelPrehistory() {
-        var body = document.getElementsByTagName('body')[0],
-            div = document.createElement('div'),
-            span,
-            spanText,
-            divPrehistory,
-            spanInDivPrehistory,
-            spanInDivPrehistoryText,
-            continueGameButton,
-            continueGameButtonText,
-            playButton;
-
-        div.id = 'prehistory-main-background';
-
-        span = document.createElement('span');
-        span.id = 'current-level';
-        spanText = document.createTextNode('Level 1 ');
-        span.textContent = spanText.textContent;
-
-        divPrehistory = document.createElement('div');
-        divPrehistory.id = 'divPrehistory';
-        divPrehistory.style.backgroundImage = "url('images/Prehistory/paper-roll.png')";
-
-        spanInDivPrehistory = document.createElement('span');
-        spanInDivPrehistory.id = 'prehistory-span-text';
-        spanInDivPrehistoryText = document.createTextNode('His first exam takes place in Telegwarts. ' +
-            'Saddy must collect all snitches so he can master the first part of S# language. Can you help him?');
-
-        spanInDivPrehistory.textContent = spanInDivPrehistoryText.textContent;
-
-        divPrehistory.appendChild(spanInDivPrehistory);
-
-        continueGameButton = document.createElement('button');
-        continueGameButton.className = 'hvr-border-fade';
-        continueGameButton.id = 'continue';
-
-        continueGameButtonText = document.createTextNode('Continue');
-        continueGameButton.textContent = continueGameButtonText.textContent;
-
-        div.appendChild(span);
-        div.appendChild(divPrehistory);
-        div.appendChild(continueGameButton);
-
-        div.style.backgroundImage = "url('images/Game Over - messages background/L1-hogwarts.jpg')";
-
-        body.appendChild(div);
-
-        playButton = document.getElementById('continue');
-        playButton.onclick = function () {
-            div.removeChild(span);
-            divPrehistory.removeChild(spanInDivPrehistory);
-            div.removeChild(divPrehistory);
-            div.removeChild(continueGameButton);
-            body.removeChild(div);
-        };
-    }
-
-    function showMainPrehistory() {
-        var body = document.getElementsByTagName('body')[0],
-            div = document.createElement('div'),
-            divPrehistory,
-            spanInDivPrehistory,
-            spanInDivPrehistoryText,
-            continueGameButton,
-            continueGameButtonText,
-            playButton;
-
-        div.id = 'prehistory-main-background';
-
-        divPrehistory = document.createElement('div');
-        divPrehistory.id = 'divMainPrehistory';
-        divPrehistory.style.backgroundImage = "url('images/Prehistory/paper-roll.png')";
-
-        spanInDivPrehistory = document.createElement('span');
-        spanInDivPrehistory.id = 'prehistory-span-text';
-        spanInDivPrehistoryText = document.createTextNode('In the magical land of Telegwarts there was a great magician, named ' +
-            'Saddy Kopper. He was a nice little boy with great intentions and an Odal rune tattooed on his forehead. ' +
-            'Saddy always used his skills for good purposes like solving programming tasks ("slochaenos.. ne misla"). ' +
-            '...But dark times came and the fate had other plans for the young Kopper. His greatest enemy - Ivomort wanted to ' +
-            'destroy him, but Saddy was a clever boy and he knew how to defeat him. But first, he had to graduate the Odal Rune ' +
-            'academy. Unfortunately, there was one huge challenge - he had to pass all exams. These were not ordinary exams - ' +
-            'each one took place in a different dimension. In some of them, there were enemies who wanted to stop him. ' +
-            'Furthermore, Saddy Kopper had to collect all points if he wanted to pass through the gates of TelegwartsCoder ' +
-            'and continue his education.');
-
-        spanInDivPrehistory.textContent = spanInDivPrehistoryText.textContent;
-
-        divPrehistory.appendChild(spanInDivPrehistory);
-
-        continueGameButton = document.createElement('button');
-        continueGameButton.className = 'hvr-border-fade';
-        continueGameButton.id = 'continue-main-prehistory';
-
-        continueGameButtonText = document.createTextNode('Continue');
-        continueGameButton.textContent = continueGameButtonText.textContent;
-
-        div.appendChild(divPrehistory);
-        div.appendChild(continueGameButton);
-
-        div.style.backgroundImage = "url('images/Game Over - messages background/L1-hogwarts.jpg')";
-
-        body.appendChild(div);
-
-        playButton = document.getElementById('continue-main-prehistory');
-        playButton.onclick = function () {
-            divPrehistory.removeChild(spanInDivPrehistory);
-            div.removeChild(divPrehistory);
-            div.removeChild(continueGameButton);
-            body.removeChild(div);
-            showLevelPrehistory();
-        };
-    }
 
     return Level1State;
 });
