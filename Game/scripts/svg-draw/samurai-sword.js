@@ -1,13 +1,6 @@
 (function () {
-    var paper,
+    var paper = Raphael(210, 90, 600, 80),
         svg;
-
-    try{
-        paper = Raphael(210, 90, 600, 80);
-    }
-    catch(ex){
-        alert('Your browser does not support Raphael. Please upgrade.');
-    }
 
     paper.rect(30, 30, 80, 20, 1, 1, 1, 1).attr({
         stroke: '#FFFFFF',
