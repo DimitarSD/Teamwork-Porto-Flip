@@ -21,6 +21,10 @@ https://cdn.rawgit.com/DimitarSD/Teamwork-Porto-Flip/master/Game/index.html
 
 Ninja Flipper is an eclectic arcade platform-type game, loosely based on Telerik Academy exam experiences. 
 
+The ninja character is controlled with the arrow keys. The game can be paused and saved. There is a How-To tutorial, accessed from the title screen.
+
+[Blah-blah thorougher description of gameplay and design]
+
 ##General Requirements
 
 The game implements:
@@ -32,7 +36,7 @@ The game is supported in Google Chrome, Mozilla Firefox, Internet Explorer 9/10/
 
 ##Additional Requirements
 
-[Thorougher description of gameplay and design]
+[Additional requirements]
 
 ##Title screen
 
