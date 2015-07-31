@@ -40,7 +40,7 @@ The game is supported in Google Chrome, Mozilla Firefox, Internet Explorer 9/10/
 
 ##Title screen
 
-![Title Screen](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/title-screen.jpg)
+![Title Screen](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/title-screen.png)
 
 ##Prehistory Screen
 
