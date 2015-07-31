@@ -1,4 +1,4 @@
-# Team: "Porto Flip"
+# Team "Porto Flip"
 
 - Aleksander Angelov
 - Biser Sirakov
@@ -17,6 +17,8 @@
 
 https://github.com/DimitarSD/Teamwork-Porto-Flip
 
+https://cdn.rawgit.com/DimitarSD/Teamwork-Porto-Flip/master/Game/index.html
+
 Ninja Flipper is an eclectic arcade platform-type game, loosely based on Telerik Academy exam experiences. 
 
 ##General Requirements
@@ -34,7 +36,27 @@ The game is supported in Google Chrome, Mozilla Firefox, Internet Explorer 9/10/
 
 ##Title screen
 
-![Title screen](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/title-screen.jpg)
+![Title Screen](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/title-screen.jpg)
+
+##Prehistory Screen
+
+![Prehistory screen](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/prehistory-screen.jpg)
+
+##Level 1
+
+![Level 1](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/level1.jpg)
+
+##Level 2
+
+![Level 2](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/level2.jpg)
+
+##Level 3
+
+![Level 3](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/level3.jpg)
+
+##Level 4
+
+![Level 4](https://github.com/DimitarSD/Teamwork-Porto-Flip/blob/master/readme-images/level4.jpg)
 
 
 ### Credits
