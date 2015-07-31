@@ -15,6 +15,8 @@
 
 *****************************************
 
+https://github.com/DimitarSD/Teamwork-Porto-Flip
+
 Ninja Flipper is an eclectic arcade platform-type game, loosely based on Telerik Academy exam experiences. 
 
 ##General Requirements
