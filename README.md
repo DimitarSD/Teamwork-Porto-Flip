@@ -32,8 +32,9 @@ The game implements:
 
   - Phaser, an HTML5 game development framework.
   - Raphael, JavaScript Library for facilitating work with SVG.
+  - Tiled Map Editor, game map editor.
 
-The game is supported in Google Chrome, Mozilla Firefox, Internet Explorer 9/10/11, Opera and Apple Safari. Raphael SVG graphics library is used for the menu screen and the page background. For the game engine and canvas graphics the game employs the Phaser framework's HTML5 Canvas renderer. 
+The game is supported in Google Chrome, Mozilla Firefox, Internet Explorer 9/10/11, Opera and Apple Safari. Raphael SVG graphics library is used for the menu screen and the page background. For the game engine and canvas graphics the game employs the Phaser framework's HTML5 Canvas renderer. Tiled Map Editor is used for game level map structuring and generation of a Phaser convention JSON map file. 
 
 ##Additional Requirements
 
