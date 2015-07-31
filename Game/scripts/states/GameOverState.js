@@ -1,6 +1,7 @@
 define(['game'], function (game) {
     var body = document.getElementsByTagName('body')[0],
         div = document.createElement('div');
+        div.id = 'message-window';
 
     function GameOverState() {
     };
@@ -21,19 +22,22 @@ define(['game'], function (game) {
             playerCurrentPoints = this.player.points;
 
         span = document.createElement('span');
+        span.id = 'game-over-title';
         spanText = document.createTextNode('Game over');
         span.textContent = spanText.textContent;
 
         playAgainButton = document.createElement('button');
-        playAgainButton.className = 'hvr-border-fade';
-        playAgainButton.id = 'play-again';
+        playAgainButton.classList.add('hvr-border-fade');
+        playAgainButton.classList.add('message-game-over-button');
+        playAgainButton.id = 'message-play-again';
 
         playAgainButtonText = document.createTextNode('Play again');
         playAgainButton.textContent = playAgainButtonText.textContent;
 
         saveButton = document.createElement('button');
-        saveButton.className = 'hvr-border-fade';
-        saveButton.id = 'save';
+        saveButton.classList.add('hvr-border-fade');
+        saveButton.classList.add('message-game-over-button');
+        saveButton.id = 'message-save';
 
         saveButtonText = document.createTextNode('Save');
         saveButton.textContent = saveButtonText.textContent;
@@ -54,7 +58,7 @@ define(['game'], function (game) {
 
         body.appendChild(div);
 
-        playButton = document.getElementById('play-again');
+        playButton = document.getElementById('message-play-again');
         playButton.onclick = function () {
             div.removeChild(span);
             div.removeChild(playAgainButton);
@@ -63,12 +67,12 @@ define(['game'], function (game) {
             game.state.start('play');
         };
 
-        saveCurrentGame = document.getElementById('save');
+        saveCurrentGame = document.getElementById('message-save');
         saveCurrentGame.onclick = function () {
             div.removeChild(span);
             div.removeChild(playAgainButton);
             div.removeChild(saveButton);
-            
+
             saveResult(playerCurrentPoints);
         };
     };
@@ -81,7 +85,7 @@ define(['game'], function (game) {
         saveButton.onclick = function () {
             var topScores = localStorage,
                 inputValue = document.getElementById('enter-name-input').value;
-            
+
             topScores.setItem(inputValue, playerCurrentPoints);
         };
     }
