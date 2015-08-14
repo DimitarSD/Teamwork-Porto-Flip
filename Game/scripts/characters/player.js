@@ -1,7 +1,4 @@
 define(['../game', 'characters/globalCharacter'], function (game, Parent) {
-    Player.prototype = new Parent();
-    Player.prototype.constructor = Player;
-
     function Player(name) {
         this.name = name;
         this.health = 200;
@@ -9,6 +6,9 @@ define(['../game', 'characters/globalCharacter'], function (game, Parent) {
         this.lives = 3;
         this.level = 1;
     };
+
+    Player.prototype = new Parent();
+    Player.prototype.constructor = Player;
 
     Player.prototype.placeAtMap = function (x, y) {
         Parent.prototype.placeAtMap.call(this, x, y, 'telerik-ninja');

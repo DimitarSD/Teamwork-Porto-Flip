@@ -1,12 +1,12 @@
 define(['../game', 'characters/globalCharacter'], function (game, Parent) {
-    Bot.prototype = new Parent();
-    Bot.prototype.constructor = Bot;
-
     function Bot(name, type, direction) {
         this.name = name;
         this.type = type;
         this.direction = direction;
     }
+
+    Bot.prototype = new Parent();
+    Bot.prototype.constructor = Bot;
 
     Bot.prototype.placeAtMap = function (x, y) {
         Parent.prototype.placeAtMap.call(this, x, y, this.type);
