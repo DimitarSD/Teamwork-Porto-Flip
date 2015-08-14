@@ -1,4 +1,7 @@
-define(['game'], function (game) {
+define(['../game', 'characters/globalCharacter'], function (game, Parent) {
+    Player.prototype = new Parent();
+    Player.prototype.constructor = Player;
+
     function Player(name) {
         this.name = name;
         this.health = 200;
@@ -8,23 +11,35 @@ define(['game'], function (game) {
     };
 
     Player.prototype.placeAtMap = function (x, y) {
-        this.graphics = game.add.sprite(x, y, 'telerik-ninja');
+        Parent.prototype.placeAtMap.call(this, x, y, 'telerik-ninja');
     };
 
     Player.prototype.makeBodyArcade = function () {
         // We need to enable physics on the player
-        game.physics.arcade.enable(this.graphics);
+        Parent.prototype.makeBodyArcade.call(this);
 
         // Player physics properties
         this.graphics.body.bounce.y = 0.2;
         this.graphics.body.gravity.y = 300;
-        this.graphics.body.collideWorldBounds = true;
     };
 
     Player.prototype.addAnimations = function () {
-        // The animations of walking left and right
-        this.graphics.animations.add('left', [0, 1, 2, 3], 6, true);
-        this.graphics.animations.add('right', [5, 6, 7, 8], 6, true);
+        var animationsCollection = [
+            {
+                direction: 'left',
+                frames: [0, 1, 2, 3],
+                frameRate: 6,
+                loop: true
+            }, {
+                direction: 'right',
+                frames:  [5, 6, 7, 8],
+                frameRate: 6,
+                loop: true
+            }
+        ];
+
+        Parent.prototype.addAnimations.call(this, animationsCollection);
+
     };
 
     Player.prototype.move = function (direction) {
@@ -35,7 +50,8 @@ define(['game'], function (game) {
         }
 
         this.graphics.body.velocity.x = dirIndex * 150;
-        this.graphics.animations.play(direction);
+
+        Parent.prototype.move.call(this, direction);
     };
 
     Player.prototype.stayStill = function () {

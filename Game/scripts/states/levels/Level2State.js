@@ -1,4 +1,4 @@
-define(['../../game', 'collectableItem', '../../nyanEnemy', '../../nyanFriend', 'states/levels/LevelState'], function (game, CollectableItem, NyanEnemy, NyanFriend, Parent) {
+define(['../../game', 'collectableItem', '../../characters/bot', '../../characters/bot', 'states/levels/LevelState'], function (game, CollectableItem, NyanEnemy, NyanFriend, Parent) {
     var map,
         levelTwoFirstLayerBackground,
         levelTwoSecondLayerPlatforms,
@@ -7,7 +7,9 @@ define(['../../game', 'collectableItem', '../../nyanEnemy', '../../nyanFriend', 
         nyanEnemies = [],
         nyanEnemiesCoordinates,
         nyanFriends = [],
-        nyanFriendsCoordinates;
+        nyanFriendsCoordinates,
+        animationsFriendsCollection,
+        animationsEnemiesCollection;
 
     function Level2State() {
     };
@@ -107,14 +109,23 @@ define(['../../game', 'collectableItem', '../../nyanEnemy', '../../nyanFriend', 
             {x: 3300, y: 160}
         ];
 
+        animationsFriendsCollection = [
+            {
+                direction: 'right',
+                frames: [0, 1, 2, 3, 4, 5],
+                frameRate: 6,
+                loop: true
+            }
+        ];
+
         for (var i = 0; i < nyanFriendsCoordinates.length; i += 1) {
             var x = nyanFriendsCoordinates[i].x;
             var y = nyanFriendsCoordinates[i].y;
 
-            var currentNyanCat = new NyanFriend('nyan-friend' + i, 'nyan-friend');
+            var currentNyanCat = new NyanFriend('nyan-friend' + i, 'nyan-friend', 'right');
             currentNyanCat.placeAtMap(x, y);
             currentNyanCat.makeBodyArcade();
-            currentNyanCat.addAnimations();
+            currentNyanCat.addAnimations(animationsFriendsCollection);
             nyanFriends.push(currentNyanCat);
         }
     }
@@ -141,6 +152,20 @@ define(['../../game', 'collectableItem', '../../nyanEnemy', '../../nyanFriend', 
             {x: 4200, y: 410, direction: 'left'}
         ];
 
+        animationsEnemiesCollection = [
+            {
+                direction: 'right',
+                frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                frameRate: 10,
+                loop: true
+            }, {
+                direction: 'left',
+                frames:  [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+                frameRate: 10,
+                loop: true
+            }
+        ];
+
         for (var i = 0; i < nyanEnemiesCoordinates.length; i += 1) {
             var x = nyanEnemiesCoordinates[i].x;
             var y = nyanEnemiesCoordinates[i].y;
@@ -149,7 +174,7 @@ define(['../../game', 'collectableItem', '../../nyanEnemy', '../../nyanFriend', 
             var currentNyanCat = new NyanEnemy('nyan-enemy' + i, 'nyan-enemy', direction);
             currentNyanCat.placeAtMap(x, y);
             currentNyanCat.makeBodyArcade();
-            currentNyanCat.addAnimations();
+            currentNyanCat.addAnimations(animationsEnemiesCollection);
             nyanEnemies.push(currentNyanCat);
         }
     }

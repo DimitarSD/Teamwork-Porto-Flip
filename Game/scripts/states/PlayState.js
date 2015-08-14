@@ -1,4 +1,4 @@
-define(['game', 'player', 'engine'], function (game, Player, Engine) {
+define(['game', '../characters/player', 'engine'], function (game, Player, Engine) {
     function PlayState () {
     };
 

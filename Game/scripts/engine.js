@@ -47,7 +47,7 @@ define(['game'], function (game) {
     };
 
     Engine.prototype.meetFriend = function () {
-        this.player.increasePoints().increasePoints().increasePoints();;
+        this.player.increasePoints().increasePoints().increasePoints();
         scoreText.text = 'Score: ' + this.player.points;
     };
 

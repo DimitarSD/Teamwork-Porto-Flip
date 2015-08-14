@@ -1,4 +1,4 @@
-define(['game', 'player'], function (game, Player) {
+define(['game', '../characters/player'], function (game, Player) {
     var map,
         levelHowtoBackground,
         levelHowtoPlatforms,
@@ -19,7 +19,7 @@ define(['game', 'player'], function (game, Player) {
 
     HowToState.prototype.create = function () {
         hideSamuraiSword();
-        
+
         /*
         // TODO replace with HowToTitle and description
         this.cursors = game.input.keyboard.createCursorKeys();
@@ -108,7 +108,7 @@ define(['game', 'player'], function (game, Player) {
         var svg = document.getElementById('samurai-sword');
         svg.style.zIndex = '1';
     }
-    
+
     function hideSamuraiSword() {
         var svg = document.getElementById('samurai-sword');
         svg.style.zIndex = '0';

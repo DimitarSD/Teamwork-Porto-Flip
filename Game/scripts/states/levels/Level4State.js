@@ -1,11 +1,12 @@
-define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], function (game, CollectableItem, BigBird, Parent) {
+define(['../../game', 'collectableItem', '../../characters/bot', 'states/levels/LevelState'], function (game, CollectableItem, BigBird, Parent) {
     var map,
         levelFourFirstLayerBackground,
         levelFourSecondLayerPlatforms,
         cookiesGroup,
         cookiesCoordinates,
         bigBirds = [],
-        bigBirdsCoordinates;
+        bigBirdsCoordinates,
+        animationsCollection;
 
     function Level4State() {
     }
@@ -116,6 +117,30 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
             {x: 2900, y: 350, direction: 'left'}
         ];
 
+        animationsCollection = [
+            {
+                direction: 'left',
+                frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+                frameRate: 20,
+                loop: true
+            }, {
+                direction: 'up',
+                frames:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+                frameRate: 20,
+                loop: true
+            }, {
+                direction: 'right',
+                frames:  [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
+                frameRate: 20,
+                loop: true
+            }, {
+                direction: 'down',
+                frames:  [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27],
+                frameRate: 20,
+                loop: true
+            }
+        ];
+
         for (var i = 0; i < bigBirdsCoordinates.length; i += 1) {
             var x = bigBirdsCoordinates[i].x;
             var y = bigBirdsCoordinates[i].y;
@@ -124,7 +149,7 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
             var currentBigBird = new BigBird('big-bird' + i, 'big-bird', direction);
             currentBigBird.placeAtMap(x, y);
             currentBigBird.makeBodyArcade();
-            currentBigBird.addAnimations();
+            currentBigBird.addAnimations(animationsCollection);
             bigBirds.push(currentBigBird);
         }
     }
@@ -155,7 +180,7 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
 
         return direction;
     }
-    
+
     function showLevelPrehistory() {
         var body = document.getElementsByTagName('body')[0],
             div = document.createElement('div'),
@@ -215,7 +240,7 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
             body.removeChild(div);
         };
     }
-    
+
     function showWinningMessage() {
         var body = document.getElementsByTagName('body')[0],
             div = document.createElement('div'),
@@ -244,6 +269,6 @@ define(['../../game', 'collectableItem', 'enemy', 'states/levels/LevelState'], f
 
         body.appendChild(div);
     }
-    
+
     return Level4State;
 });
