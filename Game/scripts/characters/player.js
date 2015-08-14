@@ -72,8 +72,8 @@ define(['../game', 'characters/globalCharacter'], function (game, Parent) {
         }
     };
 
-    Player.prototype.increasePoints = function () {
-        this.points += 10;
+    Player.prototype.increasePoints = function (points) {
+        this.points += points;
 
         return this;
     };

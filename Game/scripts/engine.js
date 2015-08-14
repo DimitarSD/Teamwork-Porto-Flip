@@ -42,12 +42,12 @@ define(['game'], function (game) {
     Engine.prototype.collectItems = function (playerSprite, snitch) {
         snitch.kill();
 
-        this.player.increasePoints();
+        this.player.increasePoints(10);
         scoreText.text = 'Score: ' + this.player.points;
     };
 
     Engine.prototype.meetFriend = function () {
-        this.player.increasePoints().increasePoints().increasePoints();
+        this.player.increasePoints(30);
         scoreText.text = 'Score: ' + this.player.points;
     };
 
